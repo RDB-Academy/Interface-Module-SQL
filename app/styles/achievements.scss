@@ -1,0 +1,52 @@
+
+.panel-menu {
+  border: black 1px solid;
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      border: gray 1px solid;
+    }
+  }
+
+  .panel-body {
+    padding: 0;
+  }
+}
+
+.achievement-list {
+  @extend .panel;
+
+  background: 0;
+  border: 0;
+  box-shadow: none;
+
+  .achievement-list-body {
+    padding: 0;
+  }
+
+}
+
+.icon-frame {
+  background-position: 1px 1px;
+  background-repeat: no-repeat;
+  border: 1px solid $gray-light;
+  border-radius: 3px;
+  box-shadow: $gray 0 0 1px;
+  display: inline-block;
+  overflow: hidden;
+  padding: 1px;
+
+
+  img {
+    display: block;
+    vertical-align: bottom;
+  }
+}
+
+.icon-frame-50 {
+  height: 54px;
+  width: 54px;
+}

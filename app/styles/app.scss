@@ -1,0 +1,60 @@
+@import 'poebli.theme';
+
+@import 'global';
+
+@import 'components/thumbnail-vertical';
+@import 'components/table-leaderboard';
+@import 'components/achievement-big';
+@import 'components/achievement-small';
+@import 'components/bs-progress-bar';
+@import 'components/bs-accordion-menu';
+
+@import 'index';
+@import 'home';
+@import 'aboutus';
+@import 'friends';
+@import 'achievements';
+@import 'impressum';
+@import 'profile';
+@import 'leaderboard';
+@import 'settings';
+@import 'pretrainer';
+
+.cs-breakline {
+  background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.0) 100%);
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.0) 100%);
+  background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.0) 100%);
+  display: block;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#1a000000',GradientType=1);
+  height: 1px;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.footer {
+    margin-top: 1em;
+    a {
+      color: rgb(150, 150, 150);
+      &:hover{
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    .logo-column {
+      height: 13em;
+
+      img {
+        height: inherit;
+      }
+    }
+
+    .logo-column::before {
+        background: #717879;
+        content: "";
+        height: 100%;
+        left: -1em;
+        position: absolute;
+        width: 1px;
+    }
+}
