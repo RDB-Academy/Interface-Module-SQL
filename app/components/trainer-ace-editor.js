@@ -7,7 +7,7 @@ export default Ember.Component.extend({
      this.preset = val;
      return val;
    }
-   if (arguments.length == 1) {
+   if (arguments.length === 1) {
      return this.editor.getSession().getValue();
    }
    var cursor = this.editor.getCursorPosition();
@@ -19,12 +19,10 @@ export default Ember.Component.extend({
  didInsertElement: function() {
    var context = this.$()[0];
    context.id = 'editor';
-   context.style.height = "300px";
-   console.log(context.style.height);
+   context.style.height = "38vh";
    this.editor = window.ace.edit('editor');
    this.editor.setTheme('ace/theme/solarized_dark');
    this.editor.getSession().setMode('ace/mode/sql');
-   console.log(this.$());
 
    context.height = context.width;
    this.editor.resize();

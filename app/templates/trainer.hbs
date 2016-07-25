@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="panel panel-default">
         <div class="panel-heading">
           Task
@@ -9,9 +9,23 @@
           Select bla from XYZ
         </div>
       </div>
+      <div>
+        {{#each model as |task|}}
+          {{task.taskText}}
+          {{#each task.relations as |relation|}}
+            {{relation.name}}
+            {{#each relation.columns as |column|}}
+              {{column.name}}
+            {{/each}}
+          {{/each}}
+        {{/each}}
+      </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       {{trainer-ace-editor}}
+      <div>
+        Result
+      </div>
     </div>
   </div>
 </div>

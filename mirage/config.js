@@ -23,4 +23,69 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
+  this.urlPrefix = 'http://localhost:8080';
+
+  this.get('/tasks', function() {
+    return {
+      data: [
+        {
+          type: 'tasks',
+          id: 1,
+          attributes: {
+            'task-text': "Select bla from x",
+          },
+          relationships: {
+            relations: {
+              data : [
+                {
+                  type: 'relations',
+                  id: 2,
+                }
+              ]
+            }
+          }
+        }
+      ],
+      included: [
+        {
+          id: 2,
+          type: 'relations',
+          attributes: {
+            name: 'User'
+          },
+          relationships: {
+            columns: {
+              data: [
+                {
+                  type: 'columns',
+                  id: 1
+                },
+                {
+                  type: 'columns',
+                  id: 2
+                }
+              ]
+            }
+          }
+        },
+        {
+          id: 1,
+          type: 'columns',
+          attributes: {
+            name: 'Username',
+            type: 'VARCHAR(256)'
+          }
+        },
+        {
+          id: 2,
+          type: 'columns',
+          attributes: {
+            name: 'email',
+            type: 'VARCHAR(256)'
+          }
+        }
+      ]
+    };
+  });
+
 }
