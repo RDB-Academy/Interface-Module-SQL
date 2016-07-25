@@ -4,7 +4,11 @@ export default Ember.Controller.extend({
   editorContent:'asdasd',
   actions:{
     exportData() {
-      console.log("HERE");
+      let tasksolution = this.store.createRecord('tasksolution', {
+        solution: this.get('editorContent')
+      });
+
+      tasksolution.checkTaskSolution();
     }
   }
 });

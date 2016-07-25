@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 const TrainerAceEditorComponent = Ember.Component.extend({
   content: Ember.computed({
-    get(key) {
+    get() {
+      console.log("HERE");
       return this.editor.getSession().getValue();
     },
     set(key, val) {
@@ -12,15 +13,16 @@ const TrainerAceEditorComponent = Ember.Component.extend({
       }
 
       var cursor = this.editor.getCursorPosition();
+      console.log("HERE2");
+
       this.editor.getSession().setValue(val);
+      console.log("HERE2");
       this.editor.moveCursorToPosition(cursor);
       return val;
     }
   }),
 
  didInsertElement: function() {
-   console.log(this.get('exportData'));
-   var context = this.$()[0];
    this.editor = window.ace.edit('editor');
    this.set('content', this.get('exportData'));
    this.editor.setTheme('ace/theme/solarized_dark');
@@ -41,13 +43,13 @@ const TrainerAceEditorComponent = Ember.Component.extend({
 
  actions: {
    exportData() {
-     console.log(this.get('content'));
      this.set('exportData', this.get('content'));
+     this.get('onExportData')();
    }
  }
 });
 
 TrainerAceEditorComponent.reopenClass({
-})
+});
 
 export default TrainerAceEditorComponent;

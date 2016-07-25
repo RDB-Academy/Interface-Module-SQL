@@ -8,8 +8,12 @@ moduleForComponent('trainer-ace-editor', 'Integration | Component | trainer ace 
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  let text = 'asas';
+
+  this.set('exportData', text);
+
   this.render(hbs`{{trainer-ace-editor}}`);
 
-  assert.equal('', '');
+  assert.ok(true);
 
 });
