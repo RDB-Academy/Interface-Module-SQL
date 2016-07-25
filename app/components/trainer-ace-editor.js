@@ -1,30 +1,31 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  tagName: 'pre',
-  content: function(key, val) {
-   if (!this.editor) {
-     this.preset = val;
-     return val;
-   }
-   if (arguments.length === 1) {
-     return this.editor.getSession().getValue();
-   }
-   var cursor = this.editor.getCursorPosition();
-   this.editor.getSession().setValue(val);
-   this.editor.moveCursorToPosition(cursor);
-   return val;
- }.property(),
+const TrainerAceEditorComponent = Ember.Component.extend({
+  content: Ember.computed({
+    get(key) {
+      return this.editor.getSession().getValue();
+    },
+    set(key, val) {
+      if (!this.editor) {
+        this.preset = val;
+        return val;
+      }
+
+      var cursor = this.editor.getCursorPosition();
+      this.editor.getSession().setValue(val);
+      this.editor.moveCursorToPosition(cursor);
+      return val;
+    }
+  }),
 
  didInsertElement: function() {
+   console.log(this.get('exportData'));
    var context = this.$()[0];
-   context.id = 'editor';
-   context.style.height = "38vh";
    this.editor = window.ace.edit('editor');
+   this.set('content', this.get('exportData'));
    this.editor.setTheme('ace/theme/solarized_dark');
    this.editor.getSession().setMode('ace/mode/sql');
 
-   context.height = context.width;
    this.editor.resize();
 
    var self = this;
@@ -36,5 +37,17 @@ export default Ember.Component.extend({
      this.set('content', this.preset);
      this.preset = null;
    }
+ },
+
+ actions: {
+   exportData() {
+     console.log(this.get('content'));
+     this.set('exportData', this.get('content'));
+   }
  }
 });
+
+TrainerAceEditorComponent.reopenClass({
+})
+
+export default TrainerAceEditorComponent;
