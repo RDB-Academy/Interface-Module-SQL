@@ -25,7 +25,7 @@ export default function() {
   */
   this.urlPrefix = 'http://localhost:8080';
 
-  this.get('/tasks', function() {
+  /*this.get('/tasks', function() {
     return {
       data: [
         {
@@ -87,5 +87,27 @@ export default function() {
       ]
     };
   });
+*/
+
+  this.get('/tasks', (schema) => {
+    return schema.tasks.all();
+  });
+
+  this.get('/relation/:id', (schema, request) => {
+    return schema.relations.find(id);
+  });
+
+  this.get('/relations', (schema) => {
+    return schema.relations.all().models;
+  })
+
+  this.get('/column/:id',  (schema, request) => {
+    return schema.columns.find(id);
+  });
+
+  this.get('/columns', (schema) => {
+    return schema.columns.all().models;
+  });
+
 
 }

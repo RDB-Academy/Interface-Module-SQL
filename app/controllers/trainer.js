@@ -9,6 +9,9 @@ export default Ember.Controller.extend({
       });
 
       tasksolution.checkTaskSolution();
+    },
+    requestTask() {
+      //NONRESTFULL CALL
     }
   }
 });

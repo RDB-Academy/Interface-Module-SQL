@@ -13,10 +13,7 @@ const TrainerAceEditorComponent = Ember.Component.extend({
       }
 
       var cursor = this.editor.getCursorPosition();
-      console.log("HERE2");
-
       this.editor.getSession().setValue(val);
-      console.log("HERE2");
       this.editor.moveCursorToPosition(cursor);
       return val;
     }

@@ -23,12 +23,29 @@
     </div>
     <div class="col-md-7">
       {{trainer-ace-editor exportData=editorContent onExportData=(action "exportData")}}
-      <div>
 
-        {{editorContent}}
-
-        Result
-      </div>
+      <table class="table table-default">
+        <thead>
+          <tr>
+            {{#each model.result.columns as |column|}}
+              <th>
+                {{column.name}}
+              </th>
+            {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.result.rows as |row|}}
+            <tr>
+              {{#each row.entryset as |entry|}}
+                <td>
+                  {{entry.value}}
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

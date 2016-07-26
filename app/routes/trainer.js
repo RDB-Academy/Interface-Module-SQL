@@ -1,8 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  currentTask: null,
   model() {
-    let task = this.store.findAll('task');
-    return task;
+    let _this = this;
+    /*return Ember.computed('currentTask', function() {
+      if (!currentTask) {
+        return null;
+      }
+      return this.store.findRecord('task', currentTask);
+    })*/
+    let relations = this.store.findAll('relation');
+    console.log(relations);
+    return relations
   }
 });
