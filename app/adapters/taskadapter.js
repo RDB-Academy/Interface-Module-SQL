@@ -1,4 +1,4 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+/*import JSONAPIAdapter from 'ember-data/adapters/json-api';
 
 const Taskadapter = JSONAPIAdapter.extend({
   checkTaskSolution(serializedData) {
@@ -7,3 +7,4 @@ const Taskadapter = JSONAPIAdapter.extend({
 });
 
 export default Taskadapter;
+*/

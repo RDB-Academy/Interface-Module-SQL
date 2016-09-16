@@ -98,6 +98,7 @@ export default function() {
   });
 
   this.get('/relations', (schema) => {
+    console.log(schema.relations.all().models);
     return schema.relations.all().models;
   })
 
