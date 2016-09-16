@@ -8,7 +8,5 @@ export default function(server) {
   */
 
   // server.createList('post', 10);
-  server.loadFixtures('columns');
-  server.loadFixtures('relations');
-  server.loadFixtures('tasks')
+  server.create('task');
 }

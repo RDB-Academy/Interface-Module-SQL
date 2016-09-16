@@ -90,19 +90,33 @@ export default function() {
 */
 
   this.get('/tasks', (schema) => {
-    return schema.tasks.all();
+    var result = schema.tasks.all();
+    console.log(result);
+    result.data.map(object => {
+      object.attributes.relation_ids.foreach(function(id){
+        object.relationships.push({
+          id: id,
+          type: 'relations'
+        })
+      })
+    });
+    return result;
   });
 
-  this.get('/relation/:id', (schema, request) => {
+  this.get('/tasks/:id', (schema, request) => {
+    return schema.tasks.find(request.params.id);
+  });
+
+  this.get('/relation/:id', (schema) => {
     return schema.relations.find(id);
   });
 
   this.get('/relations', (schema) => {
     console.log(schema.relations.all().models);
     return schema.relations.all().models;
-  })
+  });
 
-  this.get('/column/:id',  (schema, request) => {
+  this.get('/column/:id',  (schema) => {
     return schema.columns.find(id);
   });
 

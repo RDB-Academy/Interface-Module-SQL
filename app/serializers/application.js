@@ -1,4 +1,3 @@
-import JSONAPIAdapter from 'ember-data/serializers/json';
-import Ember from 'ember';
+import DS from 'ember-data';
 
-export default JSONAPIAdapter;
+export default DS.JSONAPISerializer;

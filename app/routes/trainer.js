@@ -12,6 +12,7 @@ export default Ember.Route.extend({
     })*/
     /*let relations = this.store.findAll('relation');*/
     /*return relations*/
-
+    this.store.findAll('task');
+    return this.store.findRecord('task', 1);
   }
 });
