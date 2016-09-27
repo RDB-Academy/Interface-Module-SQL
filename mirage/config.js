@@ -23,101 +23,26 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
-  this.urlPrefix = 'http://localhost:8080';
-
-  /*this.get('/tasks', function() {
-    return {
-      data: [
-        {
-          type: 'tasks',
-          id: 1,
-          attributes: {
-            'task-text': "Select bla from x",
-          },
-          relationships: {
-            relations: {
-              data : [
-                {
-                  type: 'relations',
-                  id: 2,
-                }
-              ]
-            }
-          }
-        }
-      ],
-      included: [
-        {
-          id: 2,
-          type: 'relations',
-          attributes: {
-            name: 'User'
-          },
-          relationships: {
-            columns: {
-              data: [
-                {
-                  type: 'columns',
-                  id: 1
-                },
-                {
-                  type: 'columns',
-                  id: 2
-                }
-              ]
-            }
-          }
-        },
-        {
-          id: 1,
-          type: 'columns',
-          attributes: {
-            name: 'Username',
-            type: 'VARCHAR(256)'
-          }
-        },
-        {
-          id: 2,
-          type: 'columns',
-          attributes: {
-            name: 'email',
-            type: 'VARCHAR(256)'
-          }
-        }
-      ]
-    };
-  });
-*/
+  this.urlPrefix = 'http://localhost:4200';
 
   this.get('/tasks', (schema) => {
-    var result = schema.tasks.all();
-    console.log(result);
-    result.data.map(object => {
-      object.attributes.relation_ids.foreach(function(id){
-        object.relationships.push({
-          id: id,
-          type: 'relations'
-        })
-      })
-    });
-    return result;
+    return schema.tasks.all();
   });
 
   this.get('/tasks/:id', (schema, request) => {
     return schema.tasks.find(request.params.id);
   });
 
-  this.get('/relation/:id', (schema) => {
-    return schema.relations.find(id);
+  this.get('/relations/:id', (schema, request) => {
+    return schema.relations.find(request.params.id);
   });
 
   this.get('/relations', (schema) => {
-    console.log(schema.relations.all().models);
     return schema.relations.all().models;
   });
 
-  this.get('/column/:id',  (schema) => {
-    return schema.columns.find(id);
+  this.get('/columns/:id',  (schema, request) => {
+    return schema.columns.find(request.params.id);
   });
 
   this.get('/columns', (schema) => {

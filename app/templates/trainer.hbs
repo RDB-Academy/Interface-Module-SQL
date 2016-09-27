@@ -6,19 +6,17 @@
           Task
         </div>
         <div class="panel-body">
-          Select bla from XYZ
+          {{model.taskText}}
         </div>
       </div>
       <div>
-        {{#each model as |task|}}
-          {{task.taskText}}
-          {{#each task.relations as |relation|}}
-            {{relation.name}}
-            {{#each relation.columns as |column|}}
-              {{column.name}}
-            {{/each}}
-          {{/each}}
+      <b>TaskText:</b> {{model.taskText}}  <br>
+      {{#each model.relations as |relation|}}
+        <b>Relation:</b> {{relation.name}} <br>
+        {{#each relation.columns as |column|}}
+        <b>Column:</b> {{column.name}} {{column.columnType}} <br>
         {{/each}}
+      {{/each}}
       </div>
     </div>
     <div class="col-md-7">
