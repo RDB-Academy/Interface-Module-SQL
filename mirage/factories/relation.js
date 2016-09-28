@@ -5,9 +5,12 @@ export default Factory.extend({
   columns: hasMany('column'),
   task: belongsTo('tasks'),
   afterCreate(relation, server) {
-    var col1 = server.create('column');
-    var col2 = server.create('column');
-    relation.columns = [col1, col2];
+    let cols = [];
+    let i;
+    for (i = 0; i< 10; i++) {
+      cols.push(server.create('column'))
+    }
+    relation.columns = cols;
     relation.save();
   }
 });

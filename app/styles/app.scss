@@ -2,24 +2,13 @@
 
 @import 'global';
 
-@import 'components/thumbnail-vertical';
-@import 'components/table-leaderboard';
-@import 'components/achievement-big';
-@import 'components/achievement-small';
-@import 'components/bs-progress-bar';
-@import 'components/bs-accordion-menu';
 @import 'components/trainer-ace-editor';
+@import 'components/schema-accordion.scss';
 
 @import 'index';
 @import 'home';
 @import 'aboutus';
-@import 'friends';
-@import 'achievements';
 @import 'impressum';
-@import 'profile';
-@import 'leaderboard';
-@import 'settings';
-@import 'pretrainer';
 
 .cs-breakline {
   background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.0) 100%);

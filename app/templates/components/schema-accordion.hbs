@@ -1,3 +1,39 @@
 {{yield}}
 
-{{TaskObject}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Database-Schema
+  </div>
+  <div class="panel-body scrollpanel">
+    {{#each TaskObject.relations as |relation|}}
+      <div aria-expanded="true" aria-controls="{{relation.name}}"
+       class="collapsecontrol" data-toggle="collapse" data-target="#{{relation.name}}">
+       <i> {{ relation.name }} </i>
+       <span class="glyphicon glyphicon-chevron-down pull-right"/>
+       <span class="glyphicon glyphicon-chevron-right pull-right"/>
+      </div>
+
+      <div id="{{relation.name}}" class="collapse in collapsablecontent" style="padding-left:2em">
+        <div class="row">
+          <div class="col-xs-3">
+            <b>Name</b>
+          </div>
+          <div class="col-xs-3">
+            <b>Type</b>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        {{#each relation.columns as |column|}}
+          <div class="row">
+            <div class="col-xs-3">
+              {{column.name}}
+            </div>
+            <div class="col-xs-3">
+              {{column.columnType}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</div>

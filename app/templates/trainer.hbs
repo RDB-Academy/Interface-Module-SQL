@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5" style="height:100%">
       <div class="panel panel-default">
         <div class="panel-heading">
           Task
@@ -9,9 +9,7 @@
           {{model.taskText}}
         </div>
       </div>
-      <div>
-        {{schema-accordion model}}
-      </div>
+      {{schema-accordion model}}
     </div>
     <div class="col-md-7">
       {{trainer-ace-editor exportData=editorContent onExportData=(action "exportData")}}
@@ -38,7 +36,9 @@
           {{/each}}
         </tbody>
       </table>
+
     </div>
+    <div class="clearfix"></div>
   </div>
 </div>
 {{outlet}}

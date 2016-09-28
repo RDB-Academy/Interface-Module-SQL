@@ -1,0 +1,25 @@
+.panel-body.scrollpanel {
+  max-height: 45vh;
+  min-height: 45hvh;
+  overflow-y: scroll;
+  width: 100%
+}
+
+.collapsecontrol {
+  cursor: pointer;
+}
+
+.collapsablecontent {
+  padding-left: 2em;
+  .underlined {
+    border-bottom: 1px solid;
+  }
+}
+
+.collapsecontrol[aria-expanded=true] .glyphicon-chevron-right {
+  display: none;
+}
+
+.collapsecontrol[aria-expanded=false] .glyphicon-chevron-down {
+  display: none;
+}
