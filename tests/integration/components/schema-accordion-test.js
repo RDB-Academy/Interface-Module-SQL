@@ -8,17 +8,24 @@ moduleForComponent('schema-accordion', 'Integration | Component | schema accordi
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  let tasks = {
+    taskText: "Bla",
+    relations: [
+      {
+        name: "relname",
+        columns: [
+          {
+            name: "colname",
+            columnType: "ColType"
+          }
+        ]
+      }
+    ]
+  };
 
-  this.render(hbs`{{schema-accordion}}`);
+  this.set('TaskObject', tasks);
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{schema-accordion TaskObject}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#schema-accordion}}
-      template block text
-    {{/schema-accordion}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().indexOf('Database-Schema') > -1);
 });

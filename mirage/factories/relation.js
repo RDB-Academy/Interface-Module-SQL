@@ -8,7 +8,7 @@ export default Factory.extend({
     let cols = [];
     let i;
     for (i = 0; i< 10; i++) {
-      cols.push(server.create('column'))
+      cols.push(server.create('column'));
     }
     relation.columns = cols;
     relation.save();
