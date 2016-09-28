@@ -1,4 +1,10 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const SchemaAccordionComponent = Ember.Component.extend({
 });
+
+SchemaAccordionComponent.reopenClass({
+  positionalParams : ['TaskObject']
+});
+
+export default SchemaAccordionComponent;

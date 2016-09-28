@@ -1,4 +1,4 @@
-import { Factory, faker, hasMany, belongsTo } from 'ember-cli-mirage';
+import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name: faker.list.cycle("email", "id", "name", "color", "size"),

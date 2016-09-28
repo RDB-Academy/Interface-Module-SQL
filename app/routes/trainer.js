@@ -17,7 +17,7 @@ export default Ember.Route.extend({
         relations.forEach((relation) => {
           console.log(relation);
           relation.get('columns');
-        })
+        });
       });
       return task;
     });

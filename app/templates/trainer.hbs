@@ -10,13 +10,7 @@
         </div>
       </div>
       <div>
-      <b>TaskText:</b> {{model.taskText}}  <br>
-      {{#each model.relations as |relation|}}
-        <b>Relation:</b> {{relation.name}} <br>
-        {{#each relation.columns as |column|}}
-        <b>Column:</b> {{column.name}} {{column.columnType}} <br>
-        {{/each}}
-      {{/each}}
+        {{schema-accordion model}}
       </div>
     </div>
     <div class="col-md-7">
