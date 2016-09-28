@@ -14,10 +14,10 @@
     <div class="col-md-7">
       {{trainer-ace-editor editorContent=userStatement onExportData=(action "submitStatement")}}
 
-      <h3> ResultSet:{{#if model.resultSet}} {{else}} none yet {{/if}} </h3>
+      <h3> ResultSet:{{#if model.resultSet}} {{else}} <small> none yet</small> {{/if}}</h3>
 
       {{#if model.resultSet}}
-      <table class="table table-default">
+      <table class="table table-condensed table-bordered">
         <thead>
           <tr>
             {{#each model.resultSet.header as |headEntry|}}

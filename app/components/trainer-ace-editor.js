@@ -22,8 +22,11 @@ const TrainerAceEditorComponent = Ember.Component.extend({
  didInsertElement: function() {
    this.editor = window.ace.edit('editor');
    this.editor.$blockScrolling = Infinity;
-   this.editor.setTheme('ace/theme/solarized_dark');
+   this.editor.setTheme('ace/theme/pastel_on_dark');
    this.editor.getSession().setMode('ace/mode/sql');
+   this.editor.setOptions({
+     fontSize: "12pt"
+   });
 
    this.editor.resize();
 
