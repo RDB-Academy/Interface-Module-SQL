@@ -1,17 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  editorContent:'asdasd',
+  userStatement:'asdasd',
   actions:{
-    exportData() {
-      let tasksolution = this.store.createRecord('tasksolution', {
-        solution: this.get('editorContent')
-      });
-
-      tasksolution.checkTaskSolution();
-    },
-    requestTask() {
-      //NONRESTFULL CALL
+    submitStatement(userStatement) {
+      this.model.userStatement = userStatement;
+      this.model.save();
     }
   }
 });

@@ -12,30 +12,32 @@
       {{schema-accordion model}}
     </div>
     <div class="col-md-7">
-      {{trainer-ace-editor exportData=editorContent onExportData=(action "exportData")}}
+      {{trainer-ace-editor editorContent=userStatement onExportData=(action "submitStatement")}}
 
+      <h3> ResultSet:{{#if model.resultSet}} {{else}} none yet {{/if}} </h3>
+
+      {{#if model.resultSet}}
       <table class="table table-default">
         <thead>
           <tr>
-            {{#each model.result.columns as |column|}}
-              <th>
-                {{column.name}}
-              </th>
+            {{#each model.resultSet.header as |headEntry|}}
+              <th>{{headEntry}}</th>
             {{/each}}
           </tr>
         </thead>
         <tbody>
-          {{#each model.result.rows as |row|}}
+          {{#each model.resultSet.datasets as |dataset|}}
             <tr>
-              {{#each row.entryset as |entry|}}
+              {{#each dataset as |setEntry|}}
                 <td>
-                  {{entry.value}}
+                  {{setEntry}}
                 </td>
               {{/each}}
             </tr>
           {{/each}}
         </tbody>
       </table>
+      {{/if}}
 
     </div>
     <div class="clearfix"></div>

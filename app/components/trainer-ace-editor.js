@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 const TrainerAceEditorComponent = Ember.Component.extend({
-  content: Ember.computed({
+
+  editorContent: Ember.computed({
     get() {
-      console.log("HERE");
       return this.editor.getSession().getValue();
     },
     set(key, val) {
@@ -21,7 +21,7 @@ const TrainerAceEditorComponent = Ember.Component.extend({
 
  didInsertElement: function() {
    this.editor = window.ace.edit('editor');
-   this.set('content', this.get('exportData'));
+   this.editor.$blockScrolling = Infinity;
    this.editor.setTheme('ace/theme/solarized_dark');
    this.editor.getSession().setMode('ace/mode/sql');
 
@@ -29,19 +29,18 @@ const TrainerAceEditorComponent = Ember.Component.extend({
 
    var self = this;
    this.editor.on('change', function() {
-     self.notifyPropertyChange('content');
+     self.notifyPropertyChange('editorContent');
    });
 
    if (this.preset) {
-     this.set('content', this.preset);
+     this.set('editorContent', this.preset);
      this.preset = null;
    }
  },
 
  actions: {
    exportData() {
-     this.set('exportData', this.get('content'));
-     this.get('onExportData')();
+      this.get('onExportData')(this.get('editorContent'));
    }
  }
 });

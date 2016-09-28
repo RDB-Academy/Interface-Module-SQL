@@ -7,7 +7,8 @@ export default Factory.extend({
   afterCreate(relation, server) {
     let cols = [];
     let i;
-    for (i = 0; i< 10; i++) {
+    let max = faker.list.random(3,4,5,6,7,8,9)();
+    for (i = 0; i< max; i++) {
       cols.push(server.create('column'));
     }
     relation.columns = cols;

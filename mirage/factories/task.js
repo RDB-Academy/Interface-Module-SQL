@@ -4,9 +4,13 @@ export default Factory.extend({
   taskText: faker.list.cycle('Select all user', 'Select one user'),
   relations: hasMany('relation'),
   afterCreate(task, server) {
-    var rel1 = server.create('relation');
-    var rel2 = server.create('relation');
-    task.relations = [rel1, rel2];
+    let rels = [];
+    let i;
+    let max = faker.list.random(1,2,3,4)();
+    for (i=0; i < max; i++) {
+      rels.push(server.create('relation'));
+    }
+    task.relations = rels;
     task.save();
   }
 });
