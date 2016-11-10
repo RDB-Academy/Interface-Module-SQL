@@ -4,6 +4,6 @@ import { hasMany, belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr('string'),
-  task: belongsTo('task'),
+  schema: belongsTo('schema'),
   columns: hasMany('column')
 });

@@ -33,6 +33,14 @@ export default function() {
     return schema.tasks.find(request.params.id);
   });
 
+  this.get('/schemas', (schema) => {
+    return schema.schemas.all();
+  });
+
+  this.get('/schemas/:id', (schema, request) => {
+    return schema.schemas.find(request.params.id);
+  });
+
   this.get('/tables/:id', (schema, request) => {
     return schema.tables.find(request.params.id);
   });
@@ -53,7 +61,7 @@ export default function() {
     let statement = JSON.parse(request.requestBody).userStatement;
     let task = schema.tasks.find(request.params.id);
     task.attrs.userStatement = statement;
-    if (statement.trim() != "") {
+    if (statement.trim() !== "") {
       task.attrs.resultSet = {
         header:['id', 'Email', 'Name'],
         datasets:[

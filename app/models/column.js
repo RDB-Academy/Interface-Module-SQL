@@ -4,7 +4,7 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr('string'),
-  columnType: attr('string'),
+  datatype: attr('string'),
   isPrimary:attr('boolean'),
   isNullable:attr('boolean'),
   table: belongsTo('table')

@@ -5,7 +5,7 @@
     Database-Schema
   </div>
   <div class="panel-body scrollpanel">
-    {{#each TaskObject.tables as |table|}}
+    {{#each TaskObject.schema.tables as |table|}}
       <div aria-expanded="true" aria-controls="{{table.name}}"
        class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}">
        <i> {{ table.name }} </i>
