@@ -50,24 +50,27 @@ export default function() {
   });
 
   this.patch('/tasks/:id', (schema, request) => {
-    let statement = JSON.parse(request.requestBody).data.attributes['user-statement'];
-    console.log(statement);
-    let task=schema.tasks.find(request.params.id);
+    let statement = JSON.parse(request.requestBody).userStatement;
+    let task = schema.tasks.find(request.params.id);
     task.attrs.userStatement = statement;
-    task.attrs.resultSet = {
-      header:['id', 'Email', 'Name'],
-      datasets:[
-        [
-          0,
-          "b@de.de",
-          "Noone"
-        ],[
-          1,
-          "b2@de.de",
-          "Noone2"
+    if (statement.trim() != "") {
+      task.attrs.resultSet = {
+        header:['id', 'Email', 'Name'],
+        datasets:[
+          [
+            0,
+            "b@de.de",
+            "Noone"
+          ],[
+            1,
+            "b2@de.de",
+            "Noone2"
+          ]
         ]
-      ]
-    };
+      };
+    } else {
+      task.attrs.resultSet = null;
+    }
     return task;
   });
 
