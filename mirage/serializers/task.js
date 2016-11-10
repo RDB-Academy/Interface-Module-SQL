@@ -1,12 +1,12 @@
 import BaseSerializer from './application';
 
 export default BaseSerializer.extend({
-  include: ['relations'],
+  include: ['tables'],
   serialize(){
     let json = BaseSerializer.prototype.serialize.apply(this, arguments);
 
-    let relations = json.relations.map(relation => relation.id);
-    json.relations = relations;
+    let tables = json.tables.map(table => table.id);
+    json.tables = tables;
 
     return json;
   }

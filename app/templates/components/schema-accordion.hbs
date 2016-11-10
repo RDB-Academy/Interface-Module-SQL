@@ -5,30 +5,36 @@
     Database-Schema
   </div>
   <div class="panel-body scrollpanel">
-    {{#each TaskObject.relations as |relation|}}
-      <div aria-expanded="true" aria-controls="{{relation.name}}"
-       class="collapsecontrol" data-toggle="collapse" data-target="#{{relation.name}}">
-       <i> {{ relation.name }} </i>
+    {{#each TaskObject.tables as |table|}}
+      <div aria-expanded="true" aria-controls="{{table.name}}"
+       class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}">
+       <i> {{ table.name }} </i>
        <span class="glyphicon glyphicon-chevron-down pull-right"/>
        <span class="glyphicon glyphicon-chevron-right pull-right"/>
       </div>
 
-      <div id="{{relation.name}}" class="collapse in collapsablecontent" style="padding-left:2em">
+      <div id="{{table.name}}" class="collapse in collapsablecontent" style="padding-left:2em">
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-xs-6">
             <b>Name</b>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-6">
             <b>Type</b>
           </div>
           <div class="clearfix"></div>
         </div>
-        {{#each relation.columns as |column|}}
+        {{#each table.columns as |column|}}
           <div class="row">
-            <div class="col-xs-3">
-              {{column.name}}
+            <div class="col-xs-6">
+              {{#if column.isPrimary}}
+                <u>{{column.name}}</u>
+              {{else if column.isNullable}}
+                {{column.name}}<i>, Nullable</i>
+              {{else}}
+                {{column.name}}
+              {{/if}}
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-6">
               {{column.columnType}}
             </div>
           </div>

@@ -33,12 +33,12 @@ export default function() {
     return schema.tasks.find(request.params.id);
   });
 
-  this.get('/relations/:id', (schema, request) => {
-    return schema.relations.find(request.params.id);
+  this.get('/tables/:id', (schema, request) => {
+    return schema.tables.find(request.params.id);
   });
 
-  this.get('/relations', (schema) => {
-    return schema.relations.all().models;
+  this.get('/tables', (schema) => {
+    return schema.tables.all().models;
   });
 
   this.get('/columns/:id',  (schema, request) => {
