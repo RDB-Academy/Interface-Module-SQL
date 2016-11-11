@@ -24,7 +24,7 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
-  this.urlPrefix = 'http://localhost:4200';
+  this.urlPrefix = 'http://localhost:4200/api';
 
   this.get('/tasks', (schema) => {
     return schema.tasks.all();
