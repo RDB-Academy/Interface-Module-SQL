@@ -3,7 +3,8 @@ import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
-  text: attr('string'),
-  name: attr('string'),
-  schema: belongsTo('schema')
+  userStatement: attr('string'),
+  resultSet: attr(),
+  isCorrect: attr('boolean'),
+  task: belongsTo('task')
 });

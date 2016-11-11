@@ -1,3 +1,4 @@
+import Mirage from 'ember-cli-mirage';
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
@@ -49,7 +50,7 @@ export default function() {
     return schema.tables.all().models;
   });
 
-  this.get('/columns/:id',  (schema, request) => {
+  this.get('/columns/:id', (schema, request) => {
     return schema.columns.find(request.params.id);
   });
 
@@ -57,12 +58,20 @@ export default function() {
     return schema.columns.all().models;
   });
 
-  this.patch('/tasks/:id', (schema, request) => {
+  this.get('/tasktrials/:id', (schema, request) => {
+    let tasktrial = schema.tasktrials.find(request.params.id);
+    if (tasktrial == null) {
+      return new Mirage.Response(400, { a: 'header' }, { error: 'No Task yeeet' });
+    }
+    return tasktrial;
+  });
+
+  this.patch('/tasktrials/:id', (schema, request) => {
     let statement = JSON.parse(request.requestBody).userStatement;
-    let task = schema.tasks.find(request.params.id);
-    task.attrs.userStatement = statement;
+    let tasktrial = schema.tasktrials.find(request.params.id);
+    tasktrial.attrs.userStatement = statement;
     if (statement.trim() !== "") {
-      task.attrs.resultSet = {
+      tasktrial.attrs.resultSet = {
         header:['id', 'Email', 'Name'],
         datasets:[
           [
@@ -77,9 +86,12 @@ export default function() {
         ]
       };
     } else {
-      task.attrs.resultSet = null;
+      tasktrial.attrs.resultSet = null;
     }
-    return task;
+    return tasktrial;
   });
 
+  this.post('tasktrials', (schema) => {
+    return this.create('tasktrial');
+  });
 }

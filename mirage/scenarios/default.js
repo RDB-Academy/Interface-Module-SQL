@@ -8,5 +8,7 @@ export default function(server) {
   */
 
   // server.createList('post', 10);
-  server.create('task');
+  if (Math.random() <0.5) {
+    server.create('tasktrial');
+  }
 }
