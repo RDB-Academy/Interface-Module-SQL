@@ -8,7 +8,7 @@ module.exports = function(environment) {
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-        'ds-finder-include': true
+        //'ds-finder-include': true
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
       }
@@ -30,7 +30,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
+    ENV.baseURL = '/api/';
     ENV.locationType = 'none';
 
     // keep test console output quieter

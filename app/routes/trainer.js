@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
+    let error;
     let tasktrial = this.store.findRecord('tasktrial', 1)
     .then(tasktrial => tasktrial, () => {
       if(true) {
@@ -13,6 +14,8 @@ export default Ember.Route.extend({
     /* Load dependency data asynchronusly */
     tasktrial.then((tasktrial) => {
       return tasktrial.get('task');
+    },(error) => {
+      console.log(error);
     }).then((task) => {
       return task.get('schema');
     }).then((schema) => {
