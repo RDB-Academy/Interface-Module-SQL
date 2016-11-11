@@ -91,7 +91,7 @@ export default function() {
     return tasktrial;
   });
 
-  this.post('tasktrials', (schema) => {
+  this.post('tasktrials', () => {
     return this.create('tasktrial');
   });
 }

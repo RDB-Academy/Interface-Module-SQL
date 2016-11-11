@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     let tasktrial = this.store.findRecord('tasktrial', 1)
-    .then(tasktrial => tasktrial, (error) => {
+    .then(tasktrial => tasktrial, () => {
       if(true) {
         return this.store.createRecord('tasktrial', {}).save();
       }

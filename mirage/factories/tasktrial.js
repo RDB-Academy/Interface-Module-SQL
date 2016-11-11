@@ -1,4 +1,4 @@
-import { Factory, faker, belongsTo } from 'ember-cli-mirage';
+import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
   afterCreate(tasktrial, server) {
