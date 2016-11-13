@@ -12,15 +12,28 @@ export default Ember.Route.extend({
 
     /* Load dependency data asynchronusly */
     tasktrial.then((tasktrial) => {
+      if (tasktrial == null) {
+        throw new Error('Server did not return a TaskTrial');
+      }
       return tasktrial.get('task');
     }).then((task) => {
+      if (task == null) {
+        throw new Error('Server did not return a Task');
+      }
       return task.get('schema');
     }).then((schema) => {
+      if (schema == null) {
+        throw new Error('Server did not return a Schema');
+      }
       return schema.get('tables');
     }).then((tables) => {
       tables.forEach((table) => {
         table.get('columns');
       });
+    }).catch((error) => {
+      return {
+        error: error
+      }
     });
 
     return tasktrial;
