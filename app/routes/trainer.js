@@ -30,10 +30,6 @@ export default Ember.Route.extend({
       tables.forEach((table) => {
         table.get('columns');
       });
-    }).catch((error) => {
-      return {
-        error: error
-      }
     });
 
     return tasktrial;

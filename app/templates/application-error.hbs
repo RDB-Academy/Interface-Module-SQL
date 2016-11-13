@@ -1,16 +1,11 @@
 <main>
   <div class="container-fluid">
-    <div class="row">
-    {{model.message}}
-    </div>
-
       {{#each model.errors as |err|}}
         <div class="row">
           <h1>{{err.status}} </h1>
-          {{err.detail}}
+          {{{err.detail}}}
           <hr>
         </div>
       {{/each}}
-
   </div>
 </main>
