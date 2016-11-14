@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'interface-module-sql',
     environment: environment,
-    baseURL: '/web/',
+    baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
