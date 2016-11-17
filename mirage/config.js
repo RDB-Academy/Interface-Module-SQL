@@ -61,7 +61,7 @@ export default function() {
   this.get('/tasktrials/:id', (schema, request) => {
     let tasktrial = schema.tasktrials.find(request.params.id);
     if (tasktrial == null) {
-      return new Mirage.Response(400, { a: 'header' }, { error: 'No Task yeeet' });
+      return new Mirage.Response(400, { a: 'header' }, { errors: [{detail:'No Task yeeet'}] });
     }
     return tasktrial;
   });

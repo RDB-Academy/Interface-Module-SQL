@@ -6,40 +6,43 @@
   </div>
   <div class="panel-body scrollpanel">
     {{#each TaskObject.schema.tables as |table|}}
-      <div aria-expanded="true" aria-controls="{{table.name}}"
-       class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}">
-       <i> {{ table.name }} </i>
-       <span class="glyphicon glyphicon-chevron-down pull-right"/>
-       <span class="glyphicon glyphicon-chevron-right pull-right"/>
-      </div>
+      <p aria-expanded="true" aria-controls="{{table.name}}"
+          class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}">
+        <strong>{{ table.name }}</strong> : TABLE
+        <small class="pull-right">COLUMNS</small>
+        <span class="glyphicon glyphicon-chevron-down pull-right"/>
+        <span class="glyphicon glyphicon-chevron-right pull-right"/>
+      </p>
 
-      <div id="{{table.name}}" class="collapse in collapsablecontent" style="padding-left:2em">
+
+      <p id="{{table.name}}" class="container-fluid collapse in collapsablecontent">
         <div class="row">
           <div class="col-xs-6">
-            <b>Name</b>
+            <small><b>NAME</b></small>
           </div>
           <div class="col-xs-6">
-            <b>Type</b>
+            <small><b>TYPE</b></small>
           </div>
-          <div class="clearfix"></div>
         </div>
         {{#each table.columns as |column|}}
           <div class="row">
             <div class="col-xs-6">
-              {{#if column.isPrimary}}
-                <u>{{column.name}}</u>
-              {{else if column.isNullable}}
-                {{column.name}}<i>, Nullable</i>
-              {{else}}
-                {{column.name}}
-              {{/if}}
+              <small>
+                {{#if column.isPrimary}}
+                  <u>{{column.name}}</u>
+                {{else if column.isNullable}}
+                  {{column.name}}<small>, Nullable</small>
+                {{else}}
+                  {{column.name}}
+                {{/if}}
+              </small>
             </div>
             <div class="col-xs-6">
-              {{column.datatype}}
+              <small>{{column.datatype}}</small>
             </div>
           </div>
         {{/each}}
-      </div>
+      </p>
     {{/each}}
   </div>
 </div>
