@@ -38,8 +38,13 @@
               </small>
             </div>
             <div class="col-xs-6">
-              <small>{{column.datatype}}</small>
+              <small>{{column.dataType}}</small>
             </div>
+            {{#if column.isSingleForeignKey}}
+              <div class="col-xs-9 col-xs-offset-1">
+                <span class="glyphicon glyphicon-arrow-right"/> <small>Table: <em>{{column.isSingleForeignKey}}</em></small>
+              </div>
+            {{/if}}
           </div>
         {{/each}}
       </p>

@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     let tasktrial = this.store.findRecord('taskTrial', 1)
     .then(tasktrial => tasktrial, () => {
       if(true) {
-        return this.store.createRecord('tasktrial', {}).save();
+        return this.store.createRecord('taskTrial', {}).save();
       }
       return null;
     });
@@ -25,11 +25,17 @@ export default Ember.Route.extend({
       if (!schema) {
         throw new Error('Server did not return a Schema');
       }
-      return schema.get('tableDefs');
-    }).then((tables) => {
+      return Promise.all([schema.get('tableDefs'), schema.get('foreignKeys')]);
+    }).then((values) => {
+      console.log(values);
+      let tables = values[0];
+      let foreignKeys = values[1];
       tables.forEach((table) => {
         table.get('columnDefs');
       });
+      foreignKeys.forEach((foreignKey) => {
+        foreignKey.get('foreignKeyRelations');
+      })
     }).catch((error) => {
       this.render('error', {model:error});
     });

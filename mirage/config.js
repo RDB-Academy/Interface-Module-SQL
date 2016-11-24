@@ -91,7 +91,15 @@ export default function() {
     return taskTrial;
   });
 
-  this.post('task-trials', () => {
+  this.post('/task-trials', () => {
     return this.create('taskTrial');
+  });
+
+  this.get('/foreign-keys/:id', (schema, request) => {
+    return schema.foreignKeys.find(request.params.id);
+  });
+
+  this.get('/foreign-key-relations/:id', (schema, request) => {
+    return schema.foreignKeyRelations.find(request.params.id);
   });
 }
