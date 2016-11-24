@@ -34,44 +34,44 @@ export default function() {
     return schema.tasks.find(request.params.id);
   });
 
-  this.get('/schemas', (schema) => {
-    return schema.schemas.all();
+  this.get('/schema-defs', (schema) => {
+    return schema.schemaDefs.all();
   });
 
-  this.get('/schemas/:id', (schema, request) => {
-    return schema.schemas.find(request.params.id);
+  this.get('/schema-defs/:id', (schema, request) => {
+    return schema.schemaDefs.find(request.params.id);
   });
 
-  this.get('/tables/:id', (schema, request) => {
-    return schema.tables.find(request.params.id);
+  this.get('/table-defs/:id', (schema, request) => {
+    return schema.tableDefs.find(request.params.id);
   });
 
-  this.get('/tables', (schema) => {
-    return schema.tables.all().models;
+  this.get('/table-defs', (schema) => {
+    return schema.tableDefs.all().models;
   });
 
-  this.get('/columns/:id', (schema, request) => {
-    return schema.columns.find(request.params.id);
+  this.get('/column-defs/:id', (schema, request) => {
+    return schema.columnDefs.find(request.params.id);
   });
 
-  this.get('/columns', (schema) => {
-    return schema.columns.all().models;
+  this.get('/column-defs', (schema) => {
+    return schema.columnDefs.all().models;
   });
 
-  this.get('/tasktrials/:id', (schema, request) => {
-    let tasktrial = schema.tasktrials.find(request.params.id);
-    if (tasktrial == null) {
+  this.get('/task-trials/:id', (schema, request) => {
+    let taskTrial = schema.taskTrials.find(request.params.id);
+    if (taskTrial == null) {
       return new Mirage.Response(400, { a: 'header' }, { errors: [{detail:'No Task yeeet'}] });
     }
-    return tasktrial;
+    return taskTrial;
   });
 
-  this.patch('/tasktrials/:id', (schema, request) => {
+  this.patch('/task-trials/:id', (schema, request) => {
     let statement = JSON.parse(request.requestBody).userStatement;
-    let tasktrial = schema.tasktrials.find(request.params.id);
-    tasktrial.attrs.userStatement = statement;
+    let taskTrial = schema.taskTrials.find(request.params.id);
+    taskTrial.attrs.userStatement = statement;
     if (statement.trim() !== "") {
-      tasktrial.attrs.resultSet = {
+      taskTrial.attrs.resultSet = {
         header:['id', 'Email', 'Name'],
         datasets:[
           [
@@ -86,12 +86,12 @@ export default function() {
         ]
       };
     } else {
-      tasktrial.attrs.resultSet = null;
+      taskTrial.attrs.resultSet = null;
     }
-    return tasktrial;
+    return taskTrial;
   });
 
-  this.post('tasktrials', () => {
-    return this.create('tasktrial');
+  this.post('task-trials', () => {
+    return this.create('taskTrial');
   });
 }

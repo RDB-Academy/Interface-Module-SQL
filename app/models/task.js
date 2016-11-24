@@ -5,5 +5,5 @@ import { belongsTo } from 'ember-data/relationships';
 export default Model.extend({
   text: attr('string'),
   name: attr('string'),
-  schema: belongsTo('schema')
+  schemaDef: belongsTo('schemaDef')
 });

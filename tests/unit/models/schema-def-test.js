@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('table', 'Unit | Model | table', {
+moduleForModel('schemaDef', 'Unit | Model | schemaDef', {
   // Specify the other units that are required for this test.
-  needs: ['model:column', 'model:schema']
+  needs: ["model:tableDef"]
 });
 
 test('it exists', function(assert) {

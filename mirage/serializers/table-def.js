@@ -1,12 +1,12 @@
 import BaseSerializer from './application';
 
 export default BaseSerializer.extend({
-  include: ['columns'],
+  include: ['columnDefs'],
   serialize(){
     let json = BaseSerializer.prototype.serialize.apply(this, arguments);
 
-    let columns = json.columns.map(column => column.id);
-    json.columns = columns;
+    let columnDefs = json.columnDefs.map(columnDef => columnDef.id);
+    json.columnDefs = columnDefs;
     json.task= undefined;
 
     return json;

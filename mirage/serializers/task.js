@@ -1,12 +1,12 @@
 import BaseSerializer from './application';
 
 export default BaseSerializer.extend({
-  include: ['schema'],
+  include: ['schemaDef'],
   serialize(){
     let json = BaseSerializer.prototype.serialize.apply(this, arguments);
 
-    let schema = json.schema.id;
-    json.schema = schema;
+    let schemaDef = json.schemaDef.id;
+    json.schemaDef = schemaDef;
 
     return json;
   }

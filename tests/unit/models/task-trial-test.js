@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('task', 'Unit | Model | task', {
+moduleForModel('task-trial', 'Unit | Model | task trial', {
   // Specify the other units that are required for this test.
-  needs: ['model:schemaDef']
+  needs: ['model:task']
 });
 
 test('it exists', function(assert) {
