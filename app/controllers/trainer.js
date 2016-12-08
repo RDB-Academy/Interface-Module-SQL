@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   userStatement: Ember.computed(function() {
-    return this.get('model').get('userStatement');
+     if(this.get('model.userStatement')) {
+       return this.get('model.userStatement');
+     }
+     return "";
   }),
   actions:{
     submitStatement(userStatement) {

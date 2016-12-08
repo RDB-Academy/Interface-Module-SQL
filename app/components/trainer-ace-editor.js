@@ -4,9 +4,11 @@ const TrainerAceEditorComponent = Ember.Component.extend({
 
   editorContent: Ember.computed({
     get() {
+      console.log(this.editor.getSession().getValue());
       return this.editor.getSession().getValue();
     },
     set(key, val) {
+      console.log("|" + val + "|");
       if (!this.editor) {
         this.preset = val;
         return val;
