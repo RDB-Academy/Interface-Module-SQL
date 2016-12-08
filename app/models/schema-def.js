@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
@@ -9,7 +10,7 @@ export default Model.extend({
   nonSingleForeignKeys: Ember.computed('foreignKeys.@each.foreignKeyRelations', function() {
     this.get("foreignKeys").getEach("foreignKeyRelations");
     return this.get('foreignKeys').filter(key => {
-      return key.get('foreignKeyRelations').get('length') > 1
-    })
+      return key.get('foreignKeyRelations').get('length') > 1;
+    });
   })
 });

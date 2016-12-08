@@ -1,7 +1,7 @@
-import { Factory, faker } from 'ember-cli-mirage';
+import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  afterCreate(foreignKeyRelation, server) {
+  afterCreate(foreignKeyRelation) {
     console.log(foreignKeyRelation);
 
     foreignKeyRelation.sourceColumnId = foreignKeyRelation.sourceColumnWill.id;

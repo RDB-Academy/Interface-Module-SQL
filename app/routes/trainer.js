@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Promise from 'rsvp';
 
 export default Ember.Route.extend({
   model() {
@@ -27,12 +28,12 @@ export default Ember.Route.extend({
         table.get('columnDefs');
       });
       foreignKeys.forEach((foreignKey) => {
-        foreignKey.get("sourceTableId")
+        foreignKey.get("sourceTableId");
         foreignKey.get('foreignKeyRelations').then((foreignKeyRelation) => {
-          foreignKeyRelation.get("sourceTableId")
+          foreignKeyRelation.get("sourceTableId");
         }
         );
-      })
+      });
     }).catch((error) => {
       this.render('error', {model:error});
     });

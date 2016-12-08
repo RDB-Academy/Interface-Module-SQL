@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('foreign-key-relation', 'Unit | Model | foreign key relation', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:foreignKey', 'model:columnDef']
 });
 
 test('it exists', function(assert) {
