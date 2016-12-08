@@ -4,5 +4,8 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   schemaDef: belongsTo('schemaDef'),
-  foreignKeyRelations: hasMany('foreignKeyRelation')
+  foreignKeyRelations: hasMany('foreignKeyRelation'),
+  sourceTableIds: Ember.computed("foreignKeyRelations.@each.sourceTableId", function() {
+    return this.get("foreignKeyRelations").getEach("sourceTableId")
+  })
 });

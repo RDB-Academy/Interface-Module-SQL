@@ -10,12 +10,11 @@ export default Model.extend({
   tableDef: belongsTo('tableDef'),
   foreignKeySources: hasMany('foreignKeyRelation', {inverse: 'sourceColumn'}),
   foreignKeyTargets: hasMany('foreignKeyRelation', {inverse: 'targetColumn'}),
-  isSingleForeignKey: Ember.computed('foreignKeySources.length', function() {
-    if (this.get('foreignKeySources').get('length') === 1) {
-      return this.get('foreignKeySources').get('firstObject').get('targetColumn').get('tableDef').get('name');
-    }
-    else {
-      return null;
-    }
+  singleForeignKeys: Ember.computed('foreignKeySources.length', function() {
+    return this.get('foreignKeySources')
+      .filter(foreignKeyRelation => {
+        return foreignKeyRelation.get("foreignKey.foreignKeyRelations.length") === 1;
+      })
+      .map(foreignKeyRelation => foreignKeyRelation.get('targetColumn.tableDef.name'));
   })
 });

@@ -7,7 +7,7 @@
   <div class="panel-body scrollpanel">
     {{#each TaskObject.schemaDef.tableDefs as |table|}}
       <p aria-expanded="true" aria-controls="{{table.name}}"
-          class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}">
+          class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}" >
         <strong>{{ table.name }}</strong> : TABLE
         <small class="pull-right">COLUMNS</small>
         <span class="glyphicon glyphicon-chevron-down pull-right"/>
@@ -25,7 +25,7 @@
           </div>
         </div>
         {{#each table.columnDefs as |column|}}
-          <div class="row">
+          <div class="row line">
             <div class="col-xs-6">
               <small>
                 {{#if column.isPrimary}}
@@ -40,11 +40,37 @@
             <div class="col-xs-6">
               <small>{{column.dataType}}</small>
             </div>
-            {{#if column.isSingleForeignKey}}
-              <div class="col-xs-9 col-xs-offset-1">
-                <span class="glyphicon glyphicon-arrow-right"/> <small>Table: <em>{{column.isSingleForeignKey}}</em></small>
+            {{#each column.singleForeignKeys as |targetColumn| }}
+              <div class="row line">
+                <div class="col-xs-9 col-xs-offset-1">
+                  <small><span class="glyphicon glyphicon-arrow-right"/> Table: <em>{{ targetColumn }}</em></small>
+                </div>
               </div>
-            {{/if}}
+            {{/each}}
+          </div>
+        {{/each}}
+        {{#each table.hasCombinedForeignKeys as |combinedKey|}}
+          <div class="row">
+            <div class="col-xs-11 col-xs-offset-1">
+              <small>
+                <ul class="list-inline" style="margin-bottom: 0">
+                  <li>(</li>
+                  {{#each combinedKey.foreignKeyRelations as |foreignKeyRelation|}}
+                    <li>
+                      {{ foreignKeyRelation.sourceColumn.name }}
+                    </li>
+                  {{/each}}
+                  <li>)</li>
+                  <li>
+                    <span class="glyphicon glyphicon-arrow-right"/>
+                  </li>
+                  <li>
+                    Table:
+                      <em>{{ combinedKey.foreignKeyRelations.firstObject.targetColumn.tableDef.name }}</em>
+                  </li>
+                </ul>
+              </small>
+            </div>
           </div>
         {{/each}}
       </p>

@@ -32,7 +32,9 @@
     }
 
     .logo-column {
-      height: 13em;
+      height: 5em;
+      border-left-width: 1px;
+      border-left: thick gray;
 
       img {
         height: inherit;

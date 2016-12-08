@@ -10,6 +10,5 @@ export default function(server) {
   // server.createList('post', 10);
   //if (Math.random() <0.5) {
     server.create('taskTrial');
-    server.create('task');
   //}
 }

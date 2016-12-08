@@ -2,13 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    let tasktrial = this.store.findRecord('taskTrial', 1)
-    .then(tasktrial => tasktrial, () => {
-      if(true) {
-        return this.store.createRecord('taskTrial', {}).save();
-      }
-      return null;
-    });
+    let tasktrial = this.store.createRecord('taskTrial', {}).save();
 
     /* Load dependency data asynchronusly */
     tasktrial.then((tasktrial) => {
@@ -27,14 +21,17 @@ export default Ember.Route.extend({
       }
       return Promise.all([schema.get('tableDefs'), schema.get('foreignKeys')]);
     }).then((values) => {
-      console.log(values);
       let tables = values[0];
       let foreignKeys = values[1];
       tables.forEach((table) => {
         table.get('columnDefs');
       });
       foreignKeys.forEach((foreignKey) => {
-        foreignKey.get('foreignKeyRelations');
+        foreignKey.get("sourceTableId")
+        foreignKey.get('foreignKeyRelations').then((foreignKeyRelation) => {
+          foreignKeyRelation.get("sourceTableId")
+        }
+        );
       })
     }).catch((error) => {
       this.render('error', {model:error});

@@ -10,8 +10,16 @@ export default Factory.extend({
     }
     schemaDef.tableDefs = rels;
     schemaDef.save();
-    let foreignKey = server.create('foreignKey', {schemaDef: schemaDef});
-    schemaDef.foreignKeys = [foreignKey];
+    let foreignKeys = [];
+    let amount = Math.random() * 6;
+
+    for (i = 0; i < amount; i++) {
+      let foreignKey = server.create('foreignKey', {schemaDef: schemaDef});
+
+      foreignKeys.push(foreignKey);
+    }
+
+    schemaDef.foreignKeys = foreignKeys;
     schemaDef.save();
   }
 });

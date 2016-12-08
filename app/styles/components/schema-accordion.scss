@@ -1,19 +1,21 @@
 .panel-body.scrollpanel {
-  max-height: 45vh;
-  min-height: 45hvh;
+  max-height: 60vh;
+  min-height: 25vh;
   overflow-y: scroll;
   width: 100%
 }
 
 .collapsecontrol {
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .collapsablecontent {
   padding-left: 2em;
   .underlined {
     border-bottom: 1px solid;
-  }
+  };
+  margin-bottom: 0;
 }
 
 .collapsecontrol[aria-expanded=true] .glyphicon-chevron-right {
@@ -22,4 +24,8 @@
 
 .collapsecontrol[aria-expanded=false] .glyphicon-chevron-down {
   display: none;
+}
+
+.line{
+  line-height: 1.15;
 }
