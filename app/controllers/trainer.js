@@ -9,10 +9,13 @@ export default Ember.Controller.extend({
   }),
   actions:{
     submitStatement(userStatement) {
+      this.set('model.error', null);
       this.model.userStatement = userStatement;
-      this.model.save().catch((error) => {
-        this.transitionToRoute('error', error);
-      });
+      let _this = this;
+      this.model.save().catch(error => {
+        console.log(error.errors[0].detail);
+         _this.set('model.error', error.errors[0].detail);
+       });
     }
   }
 });

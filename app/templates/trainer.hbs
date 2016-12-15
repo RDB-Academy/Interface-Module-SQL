@@ -1,4 +1,14 @@
 <div class="container-fluid">
+  {{#if model.error}}
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+          Error occured:
+      </div>
+      <div class="panel-body">
+        {{{model.error}}}
+      </div>
+    </div>
+  {{/if}}
   <div class="row">
     <div class="col-md-5" style="height:100%">
       <div class="panel panel-default">
