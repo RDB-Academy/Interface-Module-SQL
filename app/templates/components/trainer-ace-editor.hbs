@@ -1,3 +1,6 @@
 {{yield}}
 <pre id='editor'> </pre>
-<button class="btn btn-success pull-right" {{action "exportData" on="click"}}>Execute Statement</button>
+<div class="btn-group pull-right">
+  <button class="btn btn-success" {{action "exportData" on="click"}}>Execute Statement</button>
+  <button class="btn btn-warning" {{action "newTask" on="click"}}> New Task </button>
+</div>

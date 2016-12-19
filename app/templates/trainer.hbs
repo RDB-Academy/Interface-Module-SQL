@@ -22,7 +22,7 @@
       {{schema-accordion model.task}}
     </div>
     <div class="col-md-7">
-      {{trainer-ace-editor editorContent=userStatement onExportData=(action "submitStatement")}}
+      {{trainer-ace-editor editorContent=userStatement onExportData=(action "submitStatement") onNewTask=(action "finishTaskTrial")}}
 
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
 

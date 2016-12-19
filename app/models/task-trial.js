@@ -6,5 +6,6 @@ export default Model.extend({
   userStatement: attr('string'),
   resultSet: attr(),
   isCorrect: attr('boolean'),
+  isFinished: attr('boolean'),
   task: belongsTo('task')
 });

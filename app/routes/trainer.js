@@ -38,5 +38,10 @@ export default Ember.Route.extend({
       this.render('error', {model:error});
     });
     return tasktrial;
+  },
+  actions: {
+    refreshModel() {
+      this.refresh();
+    }
   }
 });

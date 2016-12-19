@@ -44,6 +44,9 @@ const TrainerAceEditorComponent = Ember.Component.extend({
  actions: {
    exportData() {
       this.get('onExportData')(this.get('editorContent'));
+   },
+   newTask() {
+     this.get('onNewTask')();
    }
  }
 });
