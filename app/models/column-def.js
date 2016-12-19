@@ -6,8 +6,8 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 export default Model.extend({
   name: attr('string'),
   dataType: attr('string'),
-  isPrimary:attr('boolean'),
-  isNullable:attr('boolean'),
+  primary:attr('boolean'),
+  nullable:attr('boolean'),
   tableDef: belongsTo('tableDef'),
   foreignKeySources: hasMany('foreignKeyRelation', {inverse: 'sourceColumn'}),
   foreignKeyTargets: hasMany('foreignKeyRelation', {inverse: 'targetColumn'}),

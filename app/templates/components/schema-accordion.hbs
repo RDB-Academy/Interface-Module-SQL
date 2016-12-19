@@ -20,9 +20,9 @@
           <div class="row line">
             <div class="col-xs-6">
               <small>
-                {{#if column.isPrimary}}
+                {{#if column.primary}}
                   <u>{{column.name}}</u>
-                {{else if column.isNullable}}
+                {{else if column.nullable}}
                   {{column.name}}<small>, Nullable</small>
                 {{else}}
                   {{column.name}}
