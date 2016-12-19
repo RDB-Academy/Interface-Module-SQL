@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
       this.model.save().catch(this.get('catchError')(this));
     },
     finishTaskTrial() {
-      this.set("model.ifFinished", true);
+      this.set("model.isFinished", true);
       let _this = this;
       return this.model.save().then(function() {
           _this.send("refreshModel");
