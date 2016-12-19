@@ -8,7 +8,7 @@
     {{#each TaskObject.schemaDef.tableDefs as |table|}}
       <p aria-expanded="true" aria-controls="{{table.name}}"
           class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}" >
-        <strong>{{ table.name }}</strong> : TABLE
+        <strong>{{ table.name }}</strong>
         <small class="pull-right">COLUMNS</small>
         <span class="glyphicon glyphicon-chevron-down pull-right"/>
         <span class="glyphicon glyphicon-chevron-right pull-right"/>
@@ -16,14 +16,6 @@
 
 
       <p id="{{table.name}}" class="container-fluid collapse in collapsablecontent">
-        <div class="row">
-          <div class="col-xs-6">
-            <small><b>NAME</b></small>
-          </div>
-          <div class="col-xs-6">
-            <small><b>TYPE</b></small>
-          </div>
-        </div>
         {{#each table.columnDefs as |column|}}
           <div class="row line">
             <div class="col-xs-6">

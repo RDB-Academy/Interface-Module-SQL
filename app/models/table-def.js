@@ -9,7 +9,7 @@ export default Model.extend({
   columnDefs: hasMany('column-def'),
   hasCombinedForeignKeys: Ember.computed("schemaDef.nonSingleForeignKeys.@each.sourceTableIds", function() {
     let _this = this;
-
+    
     return this.get("schemaDef.nonSingleForeignKeys").filter(key => {
       return key.get("sourceTableIds").every(sourceTableId => {
         return sourceTableId === _this.get("id");
