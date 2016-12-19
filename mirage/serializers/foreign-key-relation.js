@@ -7,10 +7,10 @@ export default BaseSerializer.extend({
 
     console.log(json);
 
-    let sourceColumn = json.sourceColumn.id;
+    let sourceColumn = json.sourceColumnId;
     json.sourceColumn = sourceColumn;
 
-    let targetColumn = json.targetColumn.id;
+    let targetColumn = json.targetColumnId;
     json.targetColumn = targetColumn;
 
     return json;
