@@ -6,9 +6,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('index', function() {
-
-  });
   this.route('trainer');
   this.route('page-not-found', {path: '/*wildcard'});
 });
