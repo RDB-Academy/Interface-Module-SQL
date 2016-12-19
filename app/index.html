@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SQL|Acadamy - Sql-Trainer</title>
+    <title>InterfaceModuleSql</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{content-for "head"}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/interface-module-sql.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/interface-module-sql.css">
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
 
-    <script src="assets/vendor.js"></script>
     <script src="scripts/ace.js"></script>
     <script src="scripts/theme-pastel_on_dark.js"></script>
     <script src="scripts/mode-sql.js"></script>
-    <script src="assets/interface-module-sql.js"></script>
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/interface-module-sql.js"></script>
 
     {{content-for "body-footer"}}
   </body>

@@ -1,22 +1,16 @@
 /*jshint node:true*/
-/* global require, module, ace */
+/* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    // Add options here
     sassOptions: {
       includePaths: [
         'bower_components/bootstrap-sass/assets/stylesheets'
       ]
     }
   });
-  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js');
-  app.import('bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2', {
-    destDir: 'fonts/bootstrap'
-  });
-
-  /* Circular Progress around Achievements */
-  app.import('bower_components/jquery-circle-progress/dist/circle-progress.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
@@ -30,6 +24,15 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  
+  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js');
+  app.import('bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2', {
+    destDir: 'fonts/bootstrap'
+  });
+
+  /* Circular Progress around Achievements */
+  app.import('bower_components/jquery-circle-progress/dist/circle-progress.js');
+
 
   return app.toTree();
 };
