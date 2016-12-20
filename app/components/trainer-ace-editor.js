@@ -34,7 +34,7 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     this.editor.commands.addCommand({
       name: 'autocommit',
       bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
-      exec: function() {_this.send('exportData')}
+      exec: function() {_this.send('exportData');}
     });
 
     this.editor.resize();

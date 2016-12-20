@@ -72,6 +72,7 @@ export default function() {
     let isFinished = requestParams.isFinished;
     let taskTrial = schema.taskTrials.find(request.params.id);
 
+    taskTrial.attrs.submitDate = new Date();
     taskTrial.attrs.isFinished = isFinished;
     taskTrial.attrs.userStatement = statement;
     if (statement.trim() !== "") {
@@ -94,6 +95,7 @@ export default function() {
     }
     if (Math.random() < 0.2) {
       taskTrial.attrs.isCorrect = true;
+      taskTrial.attrs.tries = Math.floor(Math.random() * 10);
     }
     taskTrial.save();
     return taskTrial;
