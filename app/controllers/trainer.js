@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   catchError: function(_this) {
     return function(error) {
-      console.log(error);
       if (error.errors) {
         _this.set('model.error', {
           message: error.errors[0].detail,
