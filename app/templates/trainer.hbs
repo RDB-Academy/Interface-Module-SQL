@@ -1,11 +1,11 @@
 <div class="container-fluid">
-  {{#if model.error}}
-    <div class="panel panel-warning">
+  {{#if model.error.message}}
+    <div class="panel panel-{{model.error.color}}">
       <div class="panel-heading">
           Error occured:
-      </div>
+        </div>
       <div class="panel-body">
-        {{{model.error}}}
+        {{{model.error.message}}}
       </div>
     </div>
   {{/if}}
@@ -26,7 +26,7 @@
 
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
 
-      {{#if model.resultSet}}
+      {{#unless model.resultSet.errorMessage}}
       <table class="table table-condensed table-bordered">
         <thead>
           <tr>
@@ -47,8 +47,7 @@
           {{/each}}
         </tbody>
       </table>
-      {{/if}}
-
+      {{/unless}}
     </div>
     <div class="clearfix"></div>
   </div>

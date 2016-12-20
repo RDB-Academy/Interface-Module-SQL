@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route("trainer");
-  this.route("page-not-found", { path: "/*wildcard" })
+  this.route("page-not-found", { path: "/*wildcard" });
 });
 
 export default Router;
