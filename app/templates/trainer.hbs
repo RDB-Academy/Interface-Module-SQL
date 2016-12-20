@@ -25,11 +25,11 @@
           {{/if}}
         </div>
       </div>
-      {{#unless model.iscorrect}}
+      {{#unless model.isCorrect}}
         {{schema-accordion model.task}}
       {{/unless}}
-      {{#if model.iscorrect}}
-        {{correct-result-display}}
+      {{#if model.isCorrect}}
+        {{result-correct-display}}
       {{/if}}
     </div>
     <div class="col-md-7">

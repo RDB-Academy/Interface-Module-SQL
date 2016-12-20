@@ -67,12 +67,11 @@ export default function() {
   });
 
   this.patch('/task-trials/:id', (schema, request) => {
-    return new Mirage.Response(200, { a: 'header' }, {id:request.params.id, resultSet: {hintMessage:'No Task yeeet', hintMessage: "yousuck"} });
-
     let requestParams = JSON.parse(request.requestBody);
     let statement = requestParams.userStatement;
     let isFinished = requestParams.isFinished;
     let taskTrial = schema.taskTrials.find(request.params.id);
+
     taskTrial.attrs.isFinished = isFinished;
     taskTrial.attrs.userStatement = statement;
     if (statement.trim() !== "") {
@@ -92,6 +91,9 @@ export default function() {
       };
     } else {
       taskTrial.attrs.resultSet = null;
+    }
+    if (Math.random() < 0.2) {
+      taskTrial.attrs.isCorrect = true;
     }
     taskTrial.save();
     return taskTrial;
