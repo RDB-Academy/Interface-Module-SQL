@@ -38,26 +38,28 @@
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
 
       {{#unless model.resultSet.errorMessage}}
-      <table class="table table-condensed table-bordered">
-        <thead>
-          <tr>
-            {{#each model.resultSet.header as |headEntry|}}
-              <th>{{headEntry}}</th>
-            {{/each}}
-          </tr>
-        </thead>
-        <tbody>
-          {{#each model.resultSet.datasets as |dataset|}}
+      <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+          <thead>
             <tr>
-              {{#each dataset as |setEntry|}}
-                <td>
-                  {{setEntry}}
-                </td>
+              {{#each model.resultSet.header as |headEntry|}}
+                <th>{{headEntry}}</th>
               {{/each}}
             </tr>
-          {{/each}}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {{#each model.resultSet.datasets as |dataset|}}
+              <tr>
+                {{#each dataset as |setEntry|}}
+                  <td>
+                    {{setEntry}}
+                  </td>
+                {{/each}}
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
       {{/unless}}
     </div>
     <div class="clearfix"></div>

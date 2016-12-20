@@ -9,18 +9,19 @@ export default Ember.Controller.extend({
           message: error.errors[0].detail,
           color: "danger"
         });
-      }
-      if (error.message) {
-        _this.set('model.error', {
-          message: error.message,
-          color: "danger"
-        });
-      }
-      if (error.errorMessage) {
-        _this.set('model.error', {
-          message: error.errorMessage,
-          color: "warning"
-        });
+      } else {
+        if (error.message) {
+          _this.set('model.error', {
+            message: error.message,
+            color: "danger"
+          });
+        }
+        if (error.errorMessage) {
+          _this.set('model.error', {
+            message: error.errorMessage,
+            color: "warning"
+          });
+        }
       }
     };
   },
