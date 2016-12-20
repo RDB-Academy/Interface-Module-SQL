@@ -29,7 +29,7 @@
         {{schema-accordion model.task}}
       {{/unless}}
       {{#if model.isCorrect}}
-        {{result-correct-display tries=model.tries beginDate=model.beginDate submitDate=model.submitDate}}
+        {{result-correct-display stats=model.stats}}
       {{/if}}
     </div>
     <div class="col-md-7">

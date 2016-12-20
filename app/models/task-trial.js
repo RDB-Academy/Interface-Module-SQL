@@ -8,7 +8,5 @@ export default Model.extend({
   isCorrect: attr('boolean'),
   isFinished: attr('boolean'),
   task: belongsTo('task'),
-  tries: attr('number'),
-  submitDate: attr('date'),
-  beginDate: attr('date')
+  stats: attr()
 });
