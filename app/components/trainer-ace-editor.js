@@ -22,39 +22,42 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     }
   }),
 
- didInsertElement: function() {
-   this.editor = window.ace.edit('editor');
-   this.editor.$blockScrolling = Infinity;
-   this.editor.setTheme('ace/theme/pastel_on_dark');
-   this.editor.getSession().setMode('ace/mode/sql');
-   this.editor.setOptions({
-     fontSize: "12pt"
-   });
+  didInsertElement: function() {
+    this.editor = window.ace.edit('editor');
+    this.editor.$blockScrolling = Infinity;
+    this.editor.setTheme('ace/theme/pastel_on_dark');
+    this.editor.getSession().setMode('ace/mode/sql');
+    this.editor.setOptions({
+      fontSize: "12pt"
+    });
+    let _this = this;
+    this.editor.commands.addCommand({
+      name: 'autocommit',
+      bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
+      exec: function() {_this.send('exportData')}
+    });
 
-   this.editor.resize();
+    this.editor.resize();
 
-   var self = this;
-   this.editor.on('change', function() {
-     self.notifyPropertyChange('editorContent');
-   });
+    var self = this;
+    this.editor.on('change', function() {
+      self.notifyPropertyChange('editorContent');
+    });
 
-   if (this.preset) {
-     this.set('editorContent', this.preset);
-     this.preset = null;
-   }
- },
+    if (this.preset) {
+      this.set('editorContent', this.preset);
+      this.preset = null;
+    }
+  },
 
- actions: {
-   exportData() {
-      this.get('onExportData')(this.get('editorContent'));
-   },
-   newTask() {
-     this.get('onNewTask')();
-   }
- }
-});
-
-TrainerAceEditorComponent.reopenClass({
+  actions: {
+    exportData() {
+       this.get('onExportData')(this.get('editorContent'));
+    },
+    newTask() {
+      this.get('onNewTask')();
+    }
+  }
 });
 
 export default TrainerAceEditorComponent;
