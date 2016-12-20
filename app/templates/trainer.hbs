@@ -17,12 +17,23 @@
         </div>
         <div class="panel-body">
           {{model.task.text}}
+          {{#if model.resultSet.hintMessage}}
+            <hr class="fine">
+            <div class="hint pull-right">
+              Hint: <i>{{{model.resultSet.hintMessage}}}</i>
+            </div>
+          {{/if}}
         </div>
       </div>
-      {{schema-accordion model.task}}
+      {{#unless model.iscorrect}}
+        {{schema-accordion model.task}}
+      {{/unless}}
+      {{#if model.iscorrect}}
+        {{correct-result-display}}
+      {{/if}}
     </div>
     <div class="col-md-7">
-      {{trainer-ace-editor editorContent=userStatement onExportData=(action "submitStatement") onNewTask=(action "finishTaskTrial")}}
+      {{trainer-ace-editor editorContent=model.userStatement onExportData=(action "submitStatement") onNewTask=(action "finishTaskTrial")}}
 
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
 

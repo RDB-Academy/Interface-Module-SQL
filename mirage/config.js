@@ -67,6 +67,8 @@ export default function() {
   });
 
   this.patch('/task-trials/:id', (schema, request) => {
+    return new Mirage.Response(200, { a: 'header' }, {id:request.params.id, resultSet: {hintMessage:'No Task yeeet', hintMessage: "yousuck"} });
+
     let requestParams = JSON.parse(request.requestBody);
     let statement = requestParams.userStatement;
     let isFinished = requestParams.isFinished;
