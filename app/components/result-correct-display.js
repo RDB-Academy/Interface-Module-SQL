@@ -13,7 +13,6 @@ export default Ember.Component.extend({
     }
   }),
   didInsertElement() {
-    console.log(this.get('displayStats'));
     let _this = this;
     this.$('#result-correct-display-modal').on('hide.bs.modal', function() {
       _this.set('displayStats', false)
