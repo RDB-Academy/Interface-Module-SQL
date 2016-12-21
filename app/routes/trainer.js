@@ -44,8 +44,8 @@ export default Ember.Route.extend({
     });
   },
   actions: {
-    refreshModel() {
-      this.refresh();
+    refreshModel(recall) {
+      this.refresh().then(recall);
     }
   }
 });

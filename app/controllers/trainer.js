@@ -49,8 +49,8 @@ export default Ember.Controller.extend({
       this.set('statsDisplayed', false);
       this.set("model.isFinished", true);
       let _this = this;
-      return this.model.save().then(function() {
-        _this.send("refreshModel");
+      this.model.save().then(function() {
+        return _this.send("refreshModel", function(){_this.set("statsDisplayed", true)});
       }).catch(this.get('catchError')(this));
     },
     showStatsModal() {
