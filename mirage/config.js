@@ -78,7 +78,7 @@ export default function() {
     if (statement.trim() !== "") {
       taskTrial.attrs.resultSet = {
         header:['id', 'Email', 'Name'],
-        datasets:[
+        dataSets:[
           [
             0,
             "b@de.de",
