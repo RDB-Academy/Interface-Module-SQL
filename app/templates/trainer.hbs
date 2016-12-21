@@ -1,4 +1,7 @@
+
 <div class="container-fluid">
+  {{result-correct-display stats=model.stats displayStats=displayStats onNewTask=(action 'finishTaskTrial')}}
+
   {{#if model.error.message}}
     <div class="panel panel-{{model.error.color}}">
       <div class="panel-heading">
@@ -9,8 +12,11 @@
       </div>
     </div>
   {{/if}}
+
   <div class="row">
+
     <div class="col-md-5" style="height:100%">
+      <!-- Task Panel -->
       <div class="panel panel-default">
         <div class="panel-heading">
           Task
@@ -24,20 +30,25 @@
             </div>
           {{/if}}
         </div>
-      </div>
-      {{#unless model.isCorrect}}
-        {{schema-accordion model.task}}
-      {{/unless}}
-      {{#if model.isCorrect}}
-        {{result-correct-display stats=model.stats}}
-      {{/if}}
+      </div><!-- Task Panel -->
+
+      {{schema-accordion model.task}}
+
     </div>
     <div class="col-md-7">
-      {{trainer-ace-editor editorContent=model.userStatement onExportData=(action "submitStatement") onNewTask=(action "finishTaskTrial")}}
+
+      {{trainer-ace-editor
+        editorContent=model.userStatement
+        disabled=model.isCorrect
+        onExportData=(action "submitStatement")
+        onNewTask=(action "finishTaskTrial")
+        onShowStats=(action "showStatsModal")
+      }}
 
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
 
       {{#unless model.resultSet.errorMessage}}
+      <!-- ResultSet Table -->
       <div class="table-responsive">
         <table class="table table-condensed table-bordered">
           <thead>
@@ -59,7 +70,7 @@
             {{/each}}
           </tbody>
         </table>
-      </div>
+      </div><!-- ResultSet Table -->
       {{/unless}}
     </div>
     <div class="clearfix"></div>

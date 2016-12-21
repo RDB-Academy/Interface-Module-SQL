@@ -1,3 +1,6 @@
 #editor {
-  height: 40vh
+  height: 40vh;
+  &.disabled {
+    opacity: 0.8
+  }
 }

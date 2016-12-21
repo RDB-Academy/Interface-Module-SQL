@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import Promise from 'rsvp';
+import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
   model() {
     let tasktrial = this.store.createRecord('taskTrial', {}).save();
 
     /* Load dependency data asynchronusly */
-    tasktrial.then((tasktrial) => {
+    let sideload = tasktrial.then((tasktrial) => {
       if (!tasktrial) {
         throw new Error('Server did not return a TaskTrial');
       }
@@ -37,7 +38,10 @@ export default Ember.Route.extend({
     }).catch((error) => {
       this.render('error', {model:error});
     });
-    return tasktrial;
+
+    return RSVP.all([tasktrial, sideload]).then(function(array) {
+      return array[0];
+    });
   },
   actions: {
     refreshModel() {

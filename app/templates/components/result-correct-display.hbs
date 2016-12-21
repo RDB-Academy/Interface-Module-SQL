@@ -1,17 +1,23 @@
 {{yield}}
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Solution correct
-  </div>
-  <div class="panel-body">
-    <dl class="dl-horizontal">
-      <dt>Tries:</dt>
-      <dd>{{stats.tries}}</dd>
-      <dt>Begin Date:</dt>
-      <dd>{{beginDateReadable}}</dd>
-      <dt>Submit Date:</dt>
-      <dd>{{submitDateReadable}}</dd>
-    </dl>
+<div class="modal fade" id="result-correct-display-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header btn-success">
+        Solution correct
+      </div>
+      <div class="modal-body">
+        <dl class="dl-horizontal">
+          <dt>Tries:</dt>
+          <dd>{{stats.tries}}</dd>
+          <dt>Begin Date:</dt>
+          <dd>{{beginDateReadable}}</dd>
+          <dt>Submit Date:</dt>
+          <dd>{{submitDateReadable}}</dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" {{action "newTask" on="click"}}> New Task </button>
+      </div>
+    </div>
   </div>
 </div>

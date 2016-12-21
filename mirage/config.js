@@ -93,7 +93,7 @@ export default function() {
     } else {
       taskTrial.attrs.resultSet = null;
     }
-    if (Math.random() < 0.2) {
+    if (Math.random() < 1) {
       taskTrial.attrs.isCorrect = true;
       taskTrial.attrs.stats.tries = Math.floor(Math.random() * 10);
     }

@@ -1,7 +1,17 @@
 import Ember from 'ember';
 
 const TrainerAceEditorComponent = Ember.Component.extend({
-
+  getDisabled: Ember.observer('disabled', function() {
+    if (this.get('disabled')) {
+      this.editor.setOption("readOnly", true);
+      this.$('#editor').addClass("disabled");
+    } else {
+      if (this.editor) {
+        this.editor.setOption("readOnly", false);
+        this.$('#editor').removeClass("disabled");
+      }
+    }
+  }),
   editorContent: Ember.computed({
     get() {
       return this.editor.getSession().getValue();
@@ -56,6 +66,9 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     },
     newTask() {
       this.get('onNewTask')();
+    },
+    showStats() {
+      this.get('onShowStats')();
     }
   }
 });
