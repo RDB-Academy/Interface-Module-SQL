@@ -4,6 +4,7 @@ import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
   model() {
+    /* Create a new TaskTrial Object */
     let tasktrial = this.store.createRecord('taskTrial', {}).save();
 
     /* Load dependency data asynchronusly */
@@ -39,13 +40,14 @@ export default Ember.Route.extend({
       this.render('error', {model:error});
     });
 
+    /* Wait for all data to be load */
     return RSVP.all([tasktrial, sideload]).then(function(array) {
       return array[0];
     });
   },
   actions: {
-    refreshModel(recall) {
-      this.refresh().then(recall);
+    refreshModel(callback) {
+      this.refresh().then(callback);
     }
   }
 });

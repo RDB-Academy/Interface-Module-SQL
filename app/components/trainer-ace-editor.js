@@ -1,5 +1,12 @@
 import Ember from 'ember';
-
+/**
+ * Injected Parameters:
+ *   disabled - boolean - controls the usability of the Ace-Editor
+ *   editorContent
+ *   onExportData
+ *   onNewTask
+ *   onShowStats
+ */
 const TrainerAceEditorComponent = Ember.Component.extend({
   getDisabled: Ember.observer('disabled', function() {
     if (this.get('disabled')) {
@@ -31,7 +38,6 @@ const TrainerAceEditorComponent = Ember.Component.extend({
       return val;
     }
   }),
-
   didInsertElement: function() {
     this.editor = window.ace.edit('editor');
     this.editor.$blockScrolling = Infinity;
@@ -40,18 +46,16 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     this.editor.setOptions({
       fontSize: "12pt"
     });
+    this.editor.resize();
+
     let _this = this;
     this.editor.commands.addCommand({
       name: 'autocommit',
       bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'},
       exec: function() {_this.send('exportData');}
     });
-
-    this.editor.resize();
-
-    var self = this;
     this.editor.on('change', function() {
-      self.notifyPropertyChange('editorContent');
+      _this.notifyPropertyChange('editorContent');
     });
 
     if (this.preset) {

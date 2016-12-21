@@ -1,5 +1,12 @@
 import Ember from 'ember';
-
+/**
+ * Injected Parameters:
+ *   beginDate
+ *   submitDate
+ *   tries
+ *   displayStats - boolean - controls modal displayment
+ *   onNewTask
+ */
 export default Ember.Component.extend({
   beginDateReadable: Ember.computed('beginDate', function() {
     return moment(this.get('beginDate')).fromNow();
@@ -17,9 +24,12 @@ export default Ember.Component.extend({
   }),
   didInsertElement() {
     let _this = this;
+    /* notice parent controller of the closing modal,
+     * so it can reopen the modal by resetting the 'displayStats' option
+     */
     this.$('#result-correct-display-modal').on('hide.bs.modal', function() {
-      _this.set('displayStats', false)
-    })
+      _this.set('displayStats', false);
+    });
   },
   actions: {
     newTask() {
