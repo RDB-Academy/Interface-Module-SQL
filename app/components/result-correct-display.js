@@ -7,6 +7,9 @@ export default Ember.Component.extend({
   submitDateReadable: Ember.computed('submitDate', function() {
     return moment(this.get('submitDate')).fromNow();
   }),
+  timeNeeded: Ember.computed('submitDate', 'beginDate', function() {
+    return moment(this.get('submitDate')).from(this.get('beginDate'), true);
+  }),
   showModal: Ember.observer('displayStats', function() {
     if (this.get('displayStats')) {
       this.$('#result-correct-display-modal').modal();
