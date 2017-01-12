@@ -38,7 +38,7 @@
     <div class="col-md-7">
 
       {{trainer-ace-editor
-        editorContent=model.userStatement
+        editorContent=model.taskTrialStatus.statement
         disabled=model.isCorrect
         onExportData=(action "submitStatement")
         onNewTask=(action "finishTaskTrial")

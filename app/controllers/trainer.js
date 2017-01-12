@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
      */
     submitStatement(userStatement) {
       this.set('model.error', null);
-      this.model.userStatement = userStatement;
+      this.set('model.taskTrialStatus.statement', userStatement);
       this.model.save().then(this.get('findErrors')).catch(this.get('catchError')(this));
     },
     /**
