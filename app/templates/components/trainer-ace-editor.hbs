@@ -1,12 +1,25 @@
 <!-- trainer-ace-editor -->
 <pre id='editor'> </pre>
-<div class="btn-group pull-right">
   {{#unless disabled}}
     <button class="btn btn-success" {{action "exportData" on="click"}}>Execute Statement</button>
   {{/unless}}
   {{#if disabled}}
     <button class="btn btn-success" {{action "showStats" on="click"}}>See Stats</button>
   {{/if}}
+<div class="btn-group pull-right">
   <button class="btn btn-primary" {{action "newTask" on="click"}}> New Task </button>
+  <button class="btn btn-default dropdown-toggle"type="button" id="difficultyDropdownMenu"
+  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    {{difficulty-element difficulty=difficulty}}
+  </button>
+  <ul class="dropdown-menu dropdownDifficulties pull-left" aria-labelledby="difficultyDropdownMenu">
+    {{#each difficulties as |diff|}}
+      <li>
+        <li class="btn btn-default full-width" {{action "setDifficulty" diff on="click"}}>
+          {{difficulty-element difficulty=diff}}
+        </li>
+      </li>
+    {{/each}}
+  </ul>
 </div>
 <!-- trainer-ace-editor -end -->

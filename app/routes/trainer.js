@@ -3,9 +3,9 @@ import Promise from 'rsvp';
 import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
-  model() {
+  model(difficulty) {
     /* Create a new TaskTrial Object */
-    let tasktrial = this.store.createRecord('taskTrial', {}).save();
+    let tasktrial = this.store.createRecord('taskTrial', {difficulty: this.get("difficulty")}).save();
 
     /* Load dependency data asynchronusly */
     let sideload = tasktrial.then((tasktrial) => {
@@ -46,7 +46,8 @@ export default Ember.Route.extend({
     });
   },
   actions: {
-    refreshModel(callback) {
+    refreshModel(difficulty, callback) {
+      this.set("difficulty", difficulty);
       this.refresh().then(callback);
     }
   }

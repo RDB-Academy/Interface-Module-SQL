@@ -8,6 +8,7 @@ import Ember from 'ember';
  *   onShowStats
  */
 const TrainerAceEditorComponent = Ember.Component.extend({
+  difficulties: [1, 2, 3, 4, 5],
   getDisabled: Ember.observer('disabled', function() {
     if (this.get('disabled')) {
       this.editor.setOption("readOnly", true);
@@ -73,6 +74,9 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     },
     showStats() {
       this.get('onShowStats')();
+    },
+    setDifficulty(difficulty) {
+      this.get('onChangeDifficulty')(difficulty);
     }
   }
 });

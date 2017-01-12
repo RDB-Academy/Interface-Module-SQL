@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  difficulty: 1,
   /**
    * Keeps track of the displayment of the stats in the result-correct-display
    */
@@ -66,13 +67,16 @@ export default Ember.Controller.extend({
       this.set("model.isFinished", true);
       let _this = this;
       this.model.save().then(function() {
-        return _this.send("refreshModel", function() {
+        return _this.send("refreshModel", _this.get("difficulty"), function() {
           _this.set("statsDisplayed", true);
         });
       }).catch(this.get('catchError')(this));
     },
     showStatsModal() {
       this.set('statsDisplayed', true);
+    },
+    changeDifficulty(difficulty){
+      this.set('difficulty', difficulty);
     }
   }
 });

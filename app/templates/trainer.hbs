@@ -43,6 +43,8 @@
         onExportData=(action "submitStatement")
         onNewTask=(action "finishTaskTrial")
         onShowStats=(action "showStatsModal")
+        onChangeDifficulty=(action "changeDifficulty")
+        difficulty=difficulty
       }}
 
       <h3> ResultSet: <small>{{#if model.resultSet}}last executed{{else}}none yet{{/if}}</small></h3>
