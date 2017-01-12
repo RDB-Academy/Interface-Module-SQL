@@ -1,7 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  difficulty: 1,
+  difficulty: Ember.computed('newDifficulty', 'model.task.difficulty', {
+    get() {
+      let newDifficulty = this.get('newDifficulty');
+      let taskDifficulty = this.get('model.task.difficulty');
+      if (newDifficulty) {
+        return newDifficulty;
+      }
+      return taskDifficulty;
+    },
+    set(key, val) {
+      this.set('newDifficulty', val);
+      return val;
+    }
+  }),
   /**
    * Keeps track of the displayment of the stats in the result-correct-display
    */
@@ -69,6 +82,7 @@ export default Ember.Controller.extend({
       this.model.save().then(function() {
         return _this.send("refreshModel", _this.get("difficulty"), function() {
           _this.set("statsDisplayed", true);
+          _this.set("newDifficulty", undefined);
         });
       }).catch(this.get('catchError')(this));
     },

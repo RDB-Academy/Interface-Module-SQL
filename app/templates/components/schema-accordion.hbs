@@ -1,71 +1,67 @@
 <!-- schema-accordion -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Database-Schema
-  </div>
-  <div class="panel-body scrollpanel">
-    {{#each TaskObject.schemaDef.tableDefs as |table|}}
-      <p aria-expanded="true" aria-controls="{{table.name}}"
-          class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}" >
-        <strong>{{ table.name }}</strong>
-        <small class="pull-right">COLUMNS</small>
-        <span class="glyphicon glyphicon-chevron-down pull-right"/>
-        <span class="glyphicon glyphicon-chevron-right pull-right"/>
-      </p>
+<h3>  Database-Schema </h3>
+<div class="scrollpanel">
+  {{#each TaskObject.schemaDef.tableDefs as |table|}}
+    <p aria-expanded="true" aria-controls="{{table.name}}"
+        class="collapsecontrol" data-toggle="collapse" data-target="#{{table.name}}" >
+      <strong>{{ table.name }}</strong>
+      <small class="pull-right">COLUMNS</small>
+      <span class="glyphicon glyphicon-chevron-down pull-right"/>
+      <span class="glyphicon glyphicon-chevron-right pull-right"/>
+    </p>
 
 
-      <p id="{{table.name}}" class="container-fluid collapse in collapsablecontent">
-        {{#each table.columnDefs as |column|}}
-          <div class="row line">
-            <div class="col-xs-6">
-              <small>
-                {{#if column.primary}}
-                  <u>{{column.name}}</u>
-                {{else if column.nullable}}
-                  {{column.name}}<small>, Nullable</small>
-                {{else}}
-                  {{column.name}}
-                {{/if}}
-              </small>
-            </div>
-            <div class="col-xs-6">
-              <small>{{column.dataType}}</small>
-            </div>
-            {{#each column.singleForeignKeys as |targetColumn| }}
-              <div class="row line">
-                <div class="col-xs-9 col-xs-offset-1">
-                  <small><span class="glyphicon glyphicon-arrow-right"/> Table: <em>{{ targetColumn }}</em></small>
-                </div>
+    <p id="{{table.name}}" class="container-fluid collapse in collapsablecontent">
+      {{#each table.columnDefs as |column|}}
+        <div class="row line">
+          <div class="col-xs-6">
+            <small>
+              {{#if column.primary}}
+                <u>{{column.name}}</u>
+              {{else if column.nullable}}
+                {{column.name}}<small>, Nullable</small>
+              {{else}}
+                {{column.name}}
+              {{/if}}
+            </small>
+          </div>
+          <div class="col-xs-6">
+            <small>{{column.dataType}}</small>
+          </div>
+          {{#each column.singleForeignKeys as |targetColumn| }}
+            <div class="row line">
+              <div class="col-xs-9 col-xs-offset-1">
+                <small><span class="glyphicon glyphicon-arrow-right"/> Table: <em>{{ targetColumn }}</em></small>
               </div>
-            {{/each}}
-          </div>
-        {{/each}}
-        {{#each table.hasCombinedForeignKeys as |combinedKey|}}
-          <div class="row">
-            <div class="col-xs-11 col-xs-offset-1">
-              <small>
-                <ul class="list-inline" style="margin-bottom: 0">
-                  <li>(</li>
-                  {{#each combinedKey.foreignKeyRelations as |foreignKeyRelation|}}
-                    <li>
-                      {{ foreignKeyRelation.sourceColumn.name }}
-                    </li>
-                  {{/each}}
-                  <li>)</li>
-                  <li>
-                    <span class="glyphicon glyphicon-arrow-right"/>
-                  </li>
-                  <li>
-                    Table:
-                      <em>{{ combinedKey.foreignKeyRelations.firstObject.targetColumn.tableDef.name }}</em>
-                  </li>
-                </ul>
-              </small>
             </div>
+          {{/each}}
+        </div>
+      {{/each}}
+      {{#each table.hasCombinedForeignKeys as |combinedKey|}}
+        <div class="row">
+          <div class="col-xs-11 col-xs-offset-1">
+            <small>
+              <ul class="list-inline" style="margin-bottom: 0">
+                <li>(</li>
+                {{#each combinedKey.foreignKeyRelations as |foreignKeyRelation|}}
+                  <li>
+                    {{ foreignKeyRelation.sourceColumn.name }}
+                  </li>
+                {{/each}}
+                <li>)</li>
+                <li>
+                  <span class="glyphicon glyphicon-arrow-right"/>
+                </li>
+                <li>
+                  Table:
+                    <em>{{ combinedKey.foreignKeyRelations.firstObject.targetColumn.tableDef.name }}</em>
+                </li>
+              </ul>
+            </small>
           </div>
-        {{/each}}
-      </p>
-    {{/each}}
-  </div>
+        </div>
+      {{/each}}
+    </p>
+  {{/each}}
 </div>
 <!-- schema-accordion - end -->

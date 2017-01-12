@@ -1,7 +1,8 @@
-.panel-body.scrollpanel {
+.scrollpanel {
   max-height: 60vh;
   min-height: 25vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%
 }
 
