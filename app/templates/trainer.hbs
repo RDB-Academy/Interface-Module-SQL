@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-  {{result-correct-display stats=model.stats displayStats=displayStats onNewTask=(action 'finishTaskTrial')}}
+  {{result-correct-display stats=model.taskTrialStatus displayStats=displayStats onNewTask=(action 'finishTaskTrial')}}
 
   {{#if model.error.message}}
     <div class="panel panel-{{model.error.color}}">
@@ -39,7 +39,7 @@
 
       {{trainer-ace-editor
         editorContent=model.taskTrialStatus.statement
-        disabled=model.isCorrect
+        disabled=model.taskTrialStatus.isCorrect
         onExportData=(action "submitStatement")
         onNewTask=(action "finishTaskTrial")
         onShowStats=(action "showStatsModal")

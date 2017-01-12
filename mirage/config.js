@@ -68,13 +68,13 @@ export default function() {
 
   this.patch('/task-trials/:id', (schema, request) => {
     let requestParams = JSON.parse(request.requestBody);
-    let statement = requestParams.userStatement;
+    let statement = requestParams.taskTrialStatus.statement;
     let isFinished = requestParams.isFinished;
     let taskTrial = schema.taskTrials.find(request.params.id);
 
-    taskTrial.attrs.stats.submitDate = new Date();
+    taskTrial.attrs.taskTrialStatus.submitedAt = new Date();
     taskTrial.attrs.isFinished = isFinished;
-    taskTrial.attrs.userStatement = statement;
+    taskTrial.attrs.taskTrialStatus.statement = statement;
     if (statement.trim() !== "") {
       taskTrial.attrs.resultSet = {
         header:['id', 'Email', 'Name'],
@@ -94,8 +94,8 @@ export default function() {
       taskTrial.attrs.resultSet = null;
     }
     if (Math.random() < 1) {
-      taskTrial.attrs.isCorrect = true;
-      taskTrial.attrs.stats.tries = Math.floor(Math.random() * 10);
+      taskTrial.attrs.taskTrialStatus.isCorrect = true;
+      taskTrial.attrs.taskTrialStatus.tries = Math.floor(Math.random() * 10);
     }
     taskTrial.save();
     return taskTrial;

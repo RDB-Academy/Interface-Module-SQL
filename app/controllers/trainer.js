@@ -6,9 +6,9 @@ export default Ember.Controller.extend({
    * Keeps track of the displayment of the stats in the result-correct-display
    */
   statsDisplayed: true,
-  displayStats: Ember.computed('model.isCorrect', 'statsDisplayed', {
+  displayStats: Ember.computed('model.taskTrialStatus.isCorrect', 'statsDisplayed', {
     get() {
-      return this.get('model.isCorrect') && this.get('statsDisplayed');
+      return this.get('model.taskTrialStatus.isCorrect') && this.get('statsDisplayed');
     },
     set(key, val) {
       this.set('statsDisplayed', val);

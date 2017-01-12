@@ -6,5 +6,6 @@ export default Model.extend({
   resultSet: attr(),
   isFinished: attr('boolean'),
   task: belongsTo('task'),
-  taskTrialStatus: attr()
+  taskTrialStatus: attr(),
+  difficulty: attr('number')
 });
