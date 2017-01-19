@@ -26,7 +26,7 @@ const TrainerAceEditorComponent = Ember.Component.extend({
     },
     set(key, val) {
       if (!val) {
-        val = "";
+        val = "SELECT \n";
       }
       if (!this.editor) {
         this.preset = val;
