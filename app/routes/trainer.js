@@ -3,7 +3,7 @@ import Promise from 'rsvp';
 import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
-  model(difficulty) {
+  model() {
     /* Create a new TaskTrial Object */
     let tasktrial = this.store.createRecord('taskTrial', {difficulty: this.get("difficulty")}).save();
 
