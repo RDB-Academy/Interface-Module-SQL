@@ -1,6 +1,12 @@
 
 <div class="container-fluid">
-  {{result-correct-display stats=model.taskTrialStatus displayStats=displayStats onNewTask=(action 'finishTaskTrial')}}
+  {{result-correct-display
+      stats=model.taskTrialStatus
+      tries=model.tries
+      createdAt=model.createdAt
+      displayStats=displayStats
+      difficulty=model.task.difficulty
+      onNewTask=(action 'finishTaskTrial')}}
 
   {{#if model.error.message}}
     <div class="panel panel-{{model.error.color}}">
@@ -26,7 +32,7 @@
               Hint: <i>{{{model.resultSet.hintMessage}}}</i>
             </div>
           {{/if}}
-        </p>  
+        </p>
       </div>
 
       {{schema-accordion model.task}}

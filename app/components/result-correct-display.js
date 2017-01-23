@@ -1,21 +1,25 @@
 import Ember from 'ember';
 /**
  * Injected Parameters:
- *   beginDate
- *   submitDate
+ *   createdAt
+ *   submittedAt
  *   tries
  *   displayStats - boolean - controls modal displayment
  *   onNewTask
  */
 export default Ember.Component.extend({
-  beginDateReadable: Ember.computed('beginDate', function() {
-    return moment(this.get('beginDate')).fromNow();
+  createdAtReadable: Ember.computed('createdAt', function() {
+    console.log("CREATED AT");
+    console.log(this.get('createdAt'));
+    return moment(this.get('createdAt')).fromNow();
   }),
-  submitDateReadable: Ember.computed('submitDate', function() {
-    return moment(this.get('submitDate')).fromNow();
+  submittedAtReadable: Ember.computed('stats.submittedAt', function() {
+    console.log("SUBMITTED AT");
+    console.log(this.get('stats.submittedAt'));
+    return moment(this.get('stats.submittedAt')).fromNow();
   }),
-  timeNeeded: Ember.computed('submitDate', 'beginDate', function() {
-    return moment(this.get('submitDate')).from(this.get('beginDate'), true);
+  timeNeeded: Ember.computed('stats.submittedAt', 'createdAt', function() {
+    return moment(this.get('stats.submittedAt')).from(this.get('createdAt'), true);
   }),
   showModal: Ember.observer('displayStats', function() {
     if (this.get('displayStats')) {

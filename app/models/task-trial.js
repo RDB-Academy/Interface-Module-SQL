@@ -7,5 +7,7 @@ export default Model.extend({
   isFinished: attr('boolean'),
   task: belongsTo('task'),
   taskTrialStatus: attr(),
+  createdAt: attr('string'),
+  tries: attr('number'),
   difficulty: attr('number')
 });

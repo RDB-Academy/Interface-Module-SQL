@@ -1,5 +1,5 @@
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
-import isEnabled from 'ember-data/-private/features';
+import Ember from 'ember';
 
 const Applicationadapter = JSONAPIAdapter.extend({
   authKey: localStorage.getItem('auth-key'),
@@ -9,7 +9,7 @@ const Applicationadapter = JSONAPIAdapter.extend({
       'Accept': 'application/json',
       'Content-Type' : 'application/json',
       'auth-key': this.get('authKey')
-    }
+    };
   }),
 
   handleResponse(response, headers, payload, requestData) {

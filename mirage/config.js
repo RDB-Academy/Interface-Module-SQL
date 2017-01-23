@@ -101,7 +101,6 @@ export default function() {
     }
     taskTrial.save();
     return new Mirage.Response(200, { "auth-key": 'myauthkey' }, taskTrial);
-;
   });
 
   this.post('/task-trials', (schema, request) => {
