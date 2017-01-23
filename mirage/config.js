@@ -59,7 +59,7 @@ export default function() {
   });
 
   this.get('/task-trials/:id', (schema, request) => {
-    let taskTrial = schema.taskTrials.find(request.params.id);
+    let taskTrial = request.params.id;
     if (taskTrial == null) {
       return new Mirage.Response(400, { a: 'header' }, { errors: [{detail:'No Task yeeet'}] });
     }
@@ -67,6 +67,8 @@ export default function() {
   });
 
   this.patch('/task-trials/:id', (schema, request) => {
+    console.log(request.requestHeaders);
+
     let requestParams = JSON.parse(request.requestBody);
     let statement = requestParams.taskTrialStatus.statement;
     let isFinished = requestParams.isFinished;
@@ -98,10 +100,12 @@ export default function() {
       taskTrial.attrs.taskTrialStatus.tries = Math.floor(Math.random() * 10);
     }
     taskTrial.save();
-    return taskTrial;
+    return new Mirage.Response(200, { "auth-key": 'myauthkey' }, taskTrial);
+;
   });
 
-  this.post('/task-trials', () => {
+  this.post('/task-trials', (schema, request) => {
+    console.log(request.requestHeaders);
     return this.create('taskTrial');
   });
 
