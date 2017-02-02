@@ -1,1 +1,1 @@
-../../bower_components/ace-builds/src-min-noconflict/ace.js
+../../bower_components/ace-builds/src-noconflict/ace.js
