@@ -115,4 +115,8 @@ export default function() {
   this.get('/foreign-key-relations/:id', (schema, request) => {
     return schema.foreignKeyRelations.find(request.params.id);
   });
+
+  this.post('/login', () => {
+    return new Mirage.Response(200, {}, { "auth-key": 'myauthkey' });
+  })
 }
