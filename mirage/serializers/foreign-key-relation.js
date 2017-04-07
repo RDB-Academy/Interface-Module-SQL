@@ -5,7 +5,6 @@ export default BaseSerializer.extend({
   serialize(){
     let json = BaseSerializer.prototype.serialize.apply(this, arguments);
 
-    console.log(json);
 
     let sourceColumn = json.sourceColumnId;
     json.sourceColumn = sourceColumn;

@@ -117,6 +117,6 @@ export default function() {
   });
 
   this.post('/login', () => {
-    return new Mirage.Response(200, {}, { "auth-key": 'myauthkey' });
-  })
+    return new Mirage.Response(200, {}, {});
+  });
 }
