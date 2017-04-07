@@ -9,13 +9,9 @@ import Ember from 'ember';
  */
 export default Ember.Component.extend({
   createdAtReadable: Ember.computed('createdAt', function() {
-    console.log("CREATED AT");
-    console.log(this.get('createdAt'));
     return moment(this.get('createdAt')).fromNow();
   }),
   submittedAtReadable: Ember.computed('stats.submittedAt', function() {
-    console.log("SUBMITTED AT");
-    console.log(this.get('stats.submittedAt'));
     return moment(this.get('stats.submittedAt')).fromNow();
   }),
   timeNeeded: Ember.computed('stats.submittedAt', 'createdAt', function() {

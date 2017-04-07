@@ -10,6 +10,9 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
+  this.set('tries', 1);
+  this.set('displayStats',true);
+  
   this.render(hbs`{{result-correct-display}}`);
 
   assert.ok(true);
